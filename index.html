@@ -74,10 +74,6 @@
     .newsletter { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; padding: 40px; border-radius: 10px; text-align: center; margin-bottom: 30px; }
     .newsletter h2 { color: white; }
     .newsletter h2:after { background-color: var(--accent); }
-    .newsletter-form { max-width: 500px; margin: 20px auto 0; display: flex; gap: 10px; }
-    .newsletter-form input { flex-grow: 1; padding: 12px; border: none; border-radius: 5px; font-size: 1rem; }
-    .newsletter-form button { background-color: var(--secondary); color: white; border: none; padding: 12px 20px; border-radius: 5px; font-weight: bold; cursor: pointer; transition: all 0.3s ease; }
-    .newsletter-form button:hover { background-color: #218838; }
     .testimonials { background-color: var(--light); padding: 40px; border-radius: 10px; margin-bottom: 30px; }
     .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
     .testimonial-card { background: white; padding: 20px; border-radius: 10px; box-shadow: var(--shadow); position: relative; }
@@ -106,7 +102,6 @@
       .hero h1 { font-size: 2.2rem; }
       .hero p { font-size: 1.2rem; }
       section { padding: 20px; }
-      .newsletter-form { flex-direction: column; }
     }
     @media (max-width: 480px) {
       .hero h1 { font-size: 1.8rem; }
@@ -147,10 +142,9 @@
     <section class="newsletter">
       <h2>Get Weekly AI Side Hustle Tips</h2>
       <p>Join our newsletter and receive the latest AI tools and strategies to boost your income</p>
-      <form class="newsletter-form" action="https://[Your-Mailchimp-Form-ID].list-manage.com/subscribe/post" method="post">
-        <input type="email" name="EMAIL" placeholder="Your email address" required>
-        <button type="submit">Subscribe</button>
-      </form>
+      <div style="margin-top: 20px;">
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe6lejVF93LHq_Kb9e5vws9dtZ82yHesbiFyaCxRZANzx3wNA/viewform?embedded=true" width="100%" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+      </div>
     </section>
     <section id="top-tools">
       <h2>Top Free AI Tools for Side Hustles</h2>
@@ -197,7 +191,7 @@
             </div>
             <div class="tool-footer">
               <a href="https://www.midjourney.com" target="_blank" class="affiliate-link">Try Midjourney</a>
-              <a href="[Your Adobe Express Awin Link]" target="_blank" class="secondary-link">Adobe Express</a>
+              <a href="[Your Simplified/Adobe Link]" target="_blank" class="secondary-link">Simplified AI Design</a>
             </div>
           </div>
         </div>
@@ -220,7 +214,7 @@
             </div>
             <div class="tool-footer">
               <a href="https://www.canva.com" target="_blank" class="affiliate-link">Try Canva Free</a>
-              <a href="[Your Adobe Express Awin Link]" target="_blank" class="secondary-link">Adobe Express Alternative</a>
+              <a href="[Your Simplified/Adobe Link]" target="_blank" class="secondary-link">Simplified AI Design</a>
             </div>
           </div>
         </div>
@@ -229,7 +223,7 @@
             <h3>vidIQ</h3>
             <span class="earning-potential">Earning Potential: $100-$500/month</span>
           </div>
-          <div class="tool-image" style="background-image: url('https://images.unsplash.com/photo-1611162617210-7d673bf0f craw&w=800&q=80');"></div>
+          <div class="tool-image" style="background-image: url('https://images.unsplash.com/photo-1611162617210-7d673bf0f3a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
           <div class="tool-body">
             <p>vidIQ is an AI-powered YouTube growth tool trusted by 20M+ creators. Use trending keywords, daily ideas, and Thumbnails Maker to boost views and monetize your channel.</p>
             <div class="tool-steps">
@@ -340,7 +334,7 @@
     <section id="about">
       <h2>About Us</h2>
       <p>AI Cash Kick, founded in 2025, guides beginners to earn $50–$500/month with free AI tools. We test and review tools to recommend the best for side hustles.</p>
-      <p>Have a tool to review? Please Contact us!</p>
+      <p>Have a tool to review? Contact us!</p>
     </section>
   </div>
   <footer>
