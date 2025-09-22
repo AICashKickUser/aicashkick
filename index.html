@@ -74,6 +74,10 @@
     .newsletter { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; padding: 40px; border-radius: 10px; text-align: center; margin-bottom: 30px; }
     .newsletter h2 { color: white; }
     .newsletter h2:after { background-color: var(--accent); }
+    .newsletter-form { max-width: 500px; margin: 20px auto; display: flex; gap: 10px; }
+    .newsletter-form input { padding: 10px; border: none; border-radius: 5px; flex-grow: 1; font-size: 1rem; }
+    .newsletter-form button { background-color: var(--secondary); color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; transition: all 0.3s ease; }
+    .newsletter-form button:hover { background-color: #218838; }
     .testimonials { background-color: var(--light); padding: 40px; border-radius: 10px; margin-bottom: 30px; }
     .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
     .testimonial-card { background: white; padding: 20px; border-radius: 10px; box-shadow: var(--shadow); position: relative; }
@@ -102,6 +106,7 @@
       .hero h1 { font-size: 2.2rem; }
       .hero p { font-size: 1.2rem; }
       section { padding: 20px; }
+      .newsletter-form { flex-direction: column; }
     }
     @media (max-width: 480px) {
       .hero h1 { font-size: 1.8rem; }
@@ -168,6 +173,7 @@
             </div>
             <div class="tool-footer">
               <a href="https://chat.openai.com" target="_blank" class="affiliate-link">Try ChatGPT Free</a>
+              <a href="https://amzn.to/47W5Zj1" target="_blank" class="secondary-link">AI Side Hustle Bible on Amazon</a>
               <a href="[Your Grammarly Awin Link]" target="_blank" class="secondary-link">Grammarly Premium</a>
             </div>
           </div>
