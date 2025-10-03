@@ -6,11 +6,11 @@
   <meta name="description" content="Discover free AI tools to earn $50-$500/month with side hustles. AI Cash Kick provides honest reviews and guides for AI-powered income opportunities.">
   <meta name="keywords" content="AI tools, side hustle, make money online, ChatGPT, Midjourney, Canva, affiliate marketing, passive income">
   <meta name="author" content="AI Cash Kick">
-  <!-- Impact Verification -->
+  <!-- Impact Verification --> 
   <meta name="Impact-Site-Verification" content="a4aacf05-62b8-41a1-81bf-0dc1a1fb4d9d">
   <!-- Open Graph Meta Tags -->
   <meta property="og:title" content="AI Cash Kick: Free AI Tools for Side Hustles">
-  <meta property="og:description" content="Discover free AI tools to earn $50-$500/month with no skills. Start your side hustle today!">
+  <meta property="og:description" content="Discover free AI tools to earn $50-,500/month with no skills. Start your side hustle today!">
   <meta property="og:image" content="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80">
   <meta property="og:url" content="https://aicashkick.com">
   <meta property="og:type" content="website">
@@ -42,11 +42,14 @@
     nav ul li { margin-left: 20px; }
     nav ul li a { color: white; text-decoration: none; font-weight: 500; transition: all 0.3s ease; padding: 5px 10px; border-radius: 4px; }
     nav ul li a:hover { background-color: rgba(255, 255, 255, 0.2); }
-    .hero { background: linear-gradient(rgba(0, 123, 255, 0.8), rgba(0, 86, 179, 0.8)), url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover; color: white; padding: 80px 0; text-align: center; border-radius: 0 0 20px 20px; margin-bottom: 40px; }
+    .hero { background: linear-gradient(rgba(0, 123, 255, 0.8), rgba(0, 86, 179, 0.8)), url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover; color: white; padding: 80px 0; text-align: center; border-radius: 0 0 20px 20px; margin-bottom: 40px; position: relative; }
     .hero h1 { font-size: 3rem; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); }
     .hero p { font-size: 1.5rem; max-width: 700px; margin: 0 auto 30px; }
     .cta-button { display: inline-block; background-color: var(--secondary); color: white; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.1rem; transition: all 0.3s ease; box-shadow: var(--shadow); }
     .cta-button:hover { background-color: #218838; transform: translateY(-3px); box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); }
+    .social-share-hero { margin-top: 20px; }
+    .social-share-hero a { display: inline-block; margin: 0 5px; color: white; text-decoration: none; font-size: 1.2rem; transition: opacity 0.3s; }
+    .social-share-hero a:hover { opacity: 0.8; }
     section { background: white; padding: 40px; border-radius: 10px; box-shadow: var(--shadow); margin-bottom: 30px; scroll-margin-top: 80px; }
     h2 { color: var(--primary-dark); margin-bottom: 20px; font-size: 2rem; position: relative; padding-bottom: 10px; }
     h2:after { content: ''; position: absolute; bottom: 0; left: 0; width: 70px; height: 4px; background-color: var(--accent); border-radius: 2px; }
@@ -60,7 +63,7 @@
     .tool-header h3 { font-size: 1.5rem; margin-bottom: 5px; }
     .earning-potential { background-color: var(--secondary); color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.9rem; display: inline-block; margin-top: 10px; }
     .tool-body { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
-    .tool-image { height: 180px; background-size: cover; background-position: center; }
+    .tool-image { height: 180px; background-size: cover; background-position: center; loading: lazy; }
     .tool-steps { margin: 15px 0; }
     .tool-steps ol { padding-left: 20px; }
     .tool-steps li { margin-bottom: 10px; }
@@ -69,6 +72,10 @@
     .affiliate-link:hover { background-color: var(--primary-dark); }
     .secondary-link { display: inline-block; background-color: transparent; color: var(--primary); padding: 10px 20px; border: 1px solid var(--primary); border-radius: 5px; text-decoration: none; font-weight: 500; transition: all 0.3s ease; margin-left: 10px; }
     .secondary-link:hover { background-color: var(--primary); color: white; }
+    .newsletter { background: linear-gradient(135deg, var(--light), #e9ecef); padding: 40px; border-radius: 10px; text-align: center; margin-bottom: 30px; }
+    .newsletter form { max-width: 500px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; }
+    .newsletter input { padding: 10px; border: 1px solid #ddd; border-radius: 5px; }
+    .newsletter button { background: var(--secondary); color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer; }
     .testimonials { background-color: var(--light); padding: 40px; border-radius: 10px; margin-bottom: 30px; }
     .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
     .testimonial-card { background: white; padding: 20px; border-radius: 10px; box-shadow: var(--shadow); position: relative; }
@@ -89,6 +96,8 @@
     .social-links { display: flex; gap: 15px; margin-top: 20px; }
     .social-links a { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; background-color: rgba(255, 255, 255, 0.1); border-radius: 50%; color: white; text-decoration: none; transition: all 0.3s ease; }
     .social-links a:hover { background-color: var(--primary); }
+    .social-share-footer { text-align: center; margin: 10px 0; }
+    .social-share-footer a { margin: 0 5px; color: white; font-size: 1.2rem; }
     .copyright { text-align: center; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.1); font-size: 0.9rem; color: #aaa; }
     @media (max-width: 768px) {
       .header-content { flex-direction: column; text-align: center; }
@@ -97,6 +106,7 @@
       .hero h1 { font-size: 2.2rem; }
       .hero p { font-size: 1.2rem; }
       section { padding: 20px; }
+      .newsletter form { flex-direction: column; }
     }
     @media (max-width: 480px) {
       .hero h1 { font-size: 1.8rem; }
@@ -118,6 +128,7 @@
           <li><a href="#home">Home</a></li>
           <li><a href="#top-tools">Top Tools</a></li>
           <li><a href="#guides">Guides</a></li>
+          <li><a href="#newsletter">Newsletter</a></li>
           <li><a href="#testimonials">Success Stories</a></li>
           <li><a href="#contact">Contact</a></li>
           <li><a href="#privacy">Privacy</a></li>
@@ -131,6 +142,11 @@
       <h1>Kickstart Your Income with Free AI Tools</h1>
       <p>Discover free AI tools to make $50–$500/month with no skills. Start your side hustle today!</p>
       <a href="#top-tools" class="cta-button">Explore Top AI Tools</a>
+      <div class="social-share-hero">
+        <a href="https://x.com/AICashKick" aria-label="Share on X">📱</a>
+        <a href="#" aria-label="Share on Facebook">f</a>
+        <a href="#" aria-label="Share on LinkedIn">in</a>
+      </div>
     </div>
   </section>
   <div class="container">
@@ -142,7 +158,7 @@
             <h3>ChatGPT</h3>
             <span class="earning-potential">Earning Potential: $50-$200/month</span>
           </div>
-          <div class="tool-image" style="background-image: url('https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+          <div class="tool-image" style="background-image: url('https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');" alt="ChatGPT interface"></div>
           <div class="tool-body">
             <p>ChatGPT, developed by OpenAI, helps you earn money by creating content for freelance clients. Perfect for blog posts, social media, and product descriptions.</p>
             <div class="tool-steps">
@@ -157,7 +173,8 @@
             <div class="tool-footer">
               <a href="https://chat.openai.com" target="_blank" class="affiliate-link">Try ChatGPT Free</a>
               <a href="https://amzn.to/47W5Zj1" target="_blank" class="secondary-link">AI Side Hustle Bible on Amazon</a>
-              <a href="[Your Grammarly Awin Link]" target="_blank" class="secondary-link">Grammarly Premium</a>
+              <a href="https://www.grammarly.com/affiliates" target="_blank" class="secondary-link">Grammarly Premium</a>
+              <a href="https://amzn.to/42XQVht" target="_blank" class="secondary-link">The ChatGPT Millionaire on Amazon</a>
             </div>
           </div>
         </div>
@@ -166,7 +183,7 @@
             <h3>Midjourney</h3>
             <span class="earning-potential">Earning Potential: $100-$500/month</span>
           </div>
-          <div class="tool-image" style="background-image: url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+          <div class="tool-image" style="background-image: url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');" alt="AI art generation"></div>
           <div class="tool-body">
             <p>Midjourney, an independent AI lab, creates stunning art via Discord. Sell on Etsy, Redbubble, or NFT platforms for profit.</p>
             <div class="tool-steps">
@@ -180,7 +197,7 @@
             </div>
             <div class="tool-footer">
               <a href="https://www.midjourney.com" target="_blank" class="affiliate-link">Try Midjourney</a>
-              <a href="https://simplified.com/ai-design" target="_blank" class="secondary-link">Simplified AI Design</a>
+              <a href="https://simplified.com?fpr=mark60" target="_blank" class="secondary-link">Simplified AI Design</a>
             </div>
           </div>
         </div>
@@ -189,7 +206,7 @@
             <h3>Canva AI</h3>
             <span class="earning-potential">Earning Potential: $75-$300/month</span>
           </div>
-          <div class="tool-image" style="background-image: url('https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+          <div class="tool-image" style="background-image: url('https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');" alt="Graphic design tools"></div>
           <div class="tool-body">
             <p>Canva’s AI tools (Magic Design, Text to Image) create professional graphics, logos, and posts. Freelance or sell templates on Etsy/Fiverr.</p>
             <div class="tool-steps">
@@ -203,7 +220,7 @@
             </div>
             <div class="tool-footer">
               <a href="https://www.canva.com" target="_blank" class="affiliate-link">Try Canva Free</a>
-              <a href="https://simplified.com/ai-design" target="_blank" class="secondary-link">Simplified AI Design</a>
+              <a href="https://simplified.com?fpr=mark60" target="_blank" class="secondary-link">Simplified AI Design</a>
             </div>
           </div>
         </div>
@@ -212,7 +229,7 @@
             <h3>vidIQ</h3>
             <span class="earning-potential">Earning Potential: $100-$500/month</span>
           </div>
-          <div class="tool-image" style="background-image: url('https://images.unsplash.com/photo-1611162617210-7d673bf0f3a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+          <div class="tool-image" style="background-image: url('https://images.unsplash.com/photo-1611162617210-7d673bf0f3a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');" alt="YouTube analytics"></div>
           <div class="tool-body">
             <p>vidIQ is an AI-powered YouTube growth tool trusted by 20M+ creators. Use trending keywords, daily ideas, and Thumbnails Maker to boost views and monetize your channel.</p>
             <div class="tool-steps">
@@ -226,7 +243,52 @@
             </div>
             <div class="tool-footer">
               <a href="https://vidiq.com/AICashKick" target="_blank" class="affiliate-link">Try vidIQ Free</a>
-              <a href="https://www.descript.com/" target="_blank" class="secondary-link">Descript for Video Editing</a>
+              <a href="https://get.descript.com/apxjw88g39tn" target="_blank" class="secondary-link">Descript for Video Editing</a>
+            </div>
+          </div>
+        </div>
+        <div class="tool-card">
+          <div class="tool-header">
+            <h3>Descript</h3>
+            <span class="earning-potential">Earning Potential: $100-$400/month</span>
+          </div>
+          <div class="tool-image" style="background-image: url('https://images.unsplash.com/photo-1547658719-da2b848c1ad1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');" alt="Video editing with AI"></div>
+          <div class="tool-body">
+            <p>Descript is an AI-powered audio/video editor. Generate unique, polished visuals tailored to your content—perfect upgrade from stock footage for podcasters and creators.</p>
+            <div class="tool-steps">
+              <h4>Getting Started:</h4>
+              <ol>
+                <li>Sign up for 3 free minutes/month at Descript</li>
+                <li>Upload media and edit like text with AI transcription</li>
+                <li>Use Generate Video for custom visuals</li>
+                <li>Freelance edits or monetize on YouTube ($20-$100/job)</li>
+              </ol>
+            </div>
+            <div class="tool-footer">
+              <a href="https://get.descript.com/apxjw88g39tn" target="_blank" class="affiliate-link">Try Descript Free</a>
+              <a href="https://www.descript.com/ai/generate-video" target="_blank" class="secondary-link">Generate Video Feature</a>
+            </div>
+          </div>
+        </div>
+        <div class="tool-card">
+          <div class="tool-header">
+            <h3>Simplified</h3>
+            <span class="earning-potential">Earning Potential: $50-$300/month</span>
+          </div>
+          <div class="tool-image" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');" alt="All-in-one AI design"></div>
+          <div class="tool-body">
+            <p>Simplified is an all-in-one AI platform for writing, design, and video. Create pro content fast for social media or freelancing.</p>
+            <div class="tool-steps">
+              <h4>Getting Started:</h4>
+              <ol>
+                <li>Sign up free at Simplified</li>
+                <li>Use AI for graphics, copy, or short videos</li>
+                <li>Offer services on Fiverr ($15-$75/job)</li>
+                <li>Upgrade for unlimited AI generations</li>
+              </ol>
+            </div>
+            <div class="tool-footer">
+              <a href="https://simplified.com?fpr=mark60" target="_blank" class="affiliate-link">Try Simplified Free</a>
             </div>
           </div>
         </div>
@@ -271,6 +333,14 @@
           </div>
         </div>
       </div>
+    </section>
+    <section id="newsletter" class="newsletter">
+      <h2>Join Our AI Hustle Newsletter</h2>
+      <p>Get weekly tips, tool updates, and exclusive deals to boost your earnings.</p>
+      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST"> <!-- Replace with your form handler -->
+        <input type="email" name="email" placeholder="Enter your email" required>
+        <button type="submit">Subscribe Free</button>
+      </form>
     </section>
     <section id="freelancing-guide">
       <h2>Beginner's Guide to AI Freelancing</h2>
@@ -344,7 +414,7 @@
       <h2>Privacy Policy</h2>
       <p>AI Cash Kick respects your privacy. We do not collect personal information without consent. Affiliate links use cookies for tracking (standard for commissions). We don't sell data.</p>
       <p>We use Google Analytics to understand visitor interactions. Data is anonymized and used to improve services.</p>
-      <p>By using our site, you consent to our privacy practices. Contact us via the form. Last updated: September 20, 2025.</p>
+      <p>By using our site, you consent to our privacy practices. Contact us via the form. Last updated: October 03, 2025.</p>
     </section>
     <section id="about">
       <h2>About Us</h2>
@@ -363,6 +433,11 @@
             <a href="#" aria-label="Facebook">f</a>
             <a href="#" aria-label="Instagram">i</a>
             <a href="#" aria-label="YouTube">y</a>
+          </div>
+          <div class="social-share-footer">
+            <a href="#" aria-label="Share">📱</a>
+            <a href="#" aria-label="Share">f</a>
+            <a href="#" aria-label="Share">in</a>
           </div>
         </div>
         <div class="footer-column">
