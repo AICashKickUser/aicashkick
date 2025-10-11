@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="description" content="Discover free AI tools to earn $50–$500/month. AI Cash Kick reviews the best AI-powered side hustles for creators and freelancers.">
-<meta name="keywords" content="AI tools, side hustle, make money online, ChatGPT, Midjourney, Canva, affiliate marketing, passive income">
+<meta name="description" content="Discover free AI tools to earn $50–$500/month. AI Cash Kick reviews the best AI-powered side hustles for creators and freelancers with in-depth reviews, examples, and affiliate opportunities.">
+<meta name="keywords" content="AI tools, side hustle, make money online, ChatGPT, Midjourney, Canva, affiliate marketing, passive income, AI tool reviews, best AI tools 2025, AI reviews for side hustles">
 <meta name="author" content="AI Cash Kick">
 <meta property="og:title" content="AI Cash Kick: Free AI Tools for Side Hustles">
-<meta property="og:description" content="Discover free AI tools to earn $50–$500/month. Start your AI side hustle today!">
+<meta property="og:description" content="Discover free AI tools to earn $50–$500/month with honest reviews and examples. Start your AI side hustle today!">
 <meta property="og:image" content="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80">
 <meta property="og:url" content="https://aicashkick.com">
 <meta property="og:type" content="website">
@@ -150,6 +150,27 @@ h2{
 }
 .secondary-link:hover{background:var(--blue);color:white;}
 
+/* ====== REVIEW CARDS ====== */ /* New styles for reviews */
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+.review-card {
+  background: var(--card);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: all .3s;
+  padding: 20px;
+}
+.review-card:hover { transform: translateY(-6px); box-shadow: 0 0 25px var(--blue-glow); }
+.review-card h3 { color: var(--accent); margin-bottom: 10px; }
+.review-card .pros-cons { display: flex; justify-content: space-between; margin: 15px 0; }
+.review-card .pros-cons ul { list-style: disc; padding-left: 20px; color: var(--gray); }
+.review-card .example { background: rgba(255,255,255,0.05); padding: 15px; border-radius: 8px; margin: 15px 0; }
+.review-card .example code { font-family: monospace; color: var(--text); }
+
 /* ====== QUICK WINS ====== */
 .quick-wins{
   background:rgba(255,255,255,0.03);
@@ -245,6 +266,7 @@ footer{
 <ul>
 <li><a href="#home">Home</a></li>
 <li><a href="#top-tools">Top Tools</a></li>
+<li><a href="#reviews">Reviews</a></li> <!-- Added Reviews to nav -->
 <li><a href="#quick-wins">Quick Wins</a></li>
 <li><a href="#guides">Guides</a></li>
 <li><a href="#newsletter">Newsletter</a></li>
@@ -257,7 +279,7 @@ footer{
 <!-- HERO -->
 <section id="home" class="hero">
 <h1>Kickstart Your Income with Free AI Tools</h1>
-<p>Discover AI tools to make $50–$500/month — no experience required. Start your side hustle today.</p>
+<p>Discover AI tools to make $50–$500/month — no experience required. Start your side hustle today with honest reviews and examples.</p>
 <a href="#top-tools" class="cta-button">Explore AI Tools</a>
 </section>
 
@@ -350,6 +372,46 @@ footer{
 </div>
 </section>
 
+<!-- NEW REVIEWS SECTION -->
+<section id="reviews">
+<h2>In-Depth AI Tool Reviews</h2>
+<p>Honest reviews of the latest AI tools, with examples of what they can do and how they solve real problems for side hustlers. Updated automatically with new discoveries.</p>
+<div class="reviews-grid">
+  <!-- Automation will inject new review cards here -->
+  
+  <!-- Sample Review: ChatGPT (Concise Version) -->
+  <div class="review-card">
+    <h3>ChatGPT: Best for Content Creation</h3>
+    <p>Versatile AI for writing and brainstorming. Solves writer's block; earn $50–$200/mo freelancing.</p>
+    <div class="pros-cons">
+      <div>
+        <strong>Pros:</strong>
+        <ul>
+          <li>Free tier with unlimited use.</li>
+          <li>Multi-language support.</li>
+        </ul>
+      </div>
+      <div>
+        <strong>Cons:</strong>
+        <ul>
+          <li>Occasional inaccuracies.</li>
+          <li>Paid upgrade for advanced features.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="example">
+      <strong>Example:</strong>
+      <p>Prompt: "AI side hustle intro."</p>
+      <code>AI tools revolutionize side hustles in 2025.</code>
+    </div>
+    <a href="https://chat.openai.com" target="_blank" class="affiliate-link">Try Free (Affiliate)</a>
+    <p style="font-size:0.8rem; color:var(--gray);">Commission earned on signup.</p>
+  </div>
+  
+  <!-- Add more manual samples or let automation handle -->
+</div>
+</section>
+
 <!-- QUICK WINS -->
 <section id="quick-wins" class="quick-wins">
 <h2>Quick Wins 💸</h2>
@@ -364,12 +426,11 @@ footer{
 <section id="newsletter" class="newsletter">
 <h2>Join Our AI Hustle Newsletter</h2>
 <p>Get weekly tips + free AI Hustle Starter Kit PDF 🚀</p>
-<form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+<form action="https://formspree.io/f/mdkwwykd" method="POST">
 <input type="email" name="email" placeholder="Enter your email" required>
 <br>
 <button type="submit">Subscribe Free</button>
 </form>
-<p style="font-size:0.8rem; color:var(--gray); margin-top:10px;">Note: Replace 'YOUR_FORM_ID' with your actual Formspree ID (sign up at formspree.io for free).</p>
 </section>
 
 <!-- TIP JAR -->
@@ -382,7 +443,7 @@ footer{
 <!-- ABOUT -->
 <section id="about">
 <h2>About AI Cash Kick</h2>
-<p>Founded in 2025, AI Cash Kick helps everyday people earn $50–$500/month with AI tools — no tech skills needed. We review, test, and share the best AI side hustles online.</p>
+<p>Founded in 2025, AI Cash Kick helps everyday people earn $50–$500/month with AI tools — no tech skills needed. We review, test, and share the best AI side hustles online with automated updates for the latest tools.</p>
 <p>💡 Affiliate disclosure: Some links earn a small commission at no extra cost to you.</p>
 </section>
 
@@ -398,6 +459,7 @@ footer{
 <h3>Resources</h3>
 <ul>
 <li><a href="#top-tools">Top Tools</a></li>
+<li><a href="#reviews">Reviews</a></li> <!-- Added Reviews to footer -->
 <li><a href="#quick-wins">Quick Wins</a></li>
 <li><a href="#about">About</a></li>
 </ul>
@@ -405,7 +467,7 @@ footer{
 <div class="footer-column">
 <h3>Follow</h3>
 <ul>
-<li><a href="https://x.com/AICashKick" target="_blank">X / Twitter</a></li>
+<li><a href="https://x.com/AIcashkick" target="_blank">X / Twitter</a></li>
 <li><a href="#">Instagram</a></li>
 <li><a href="#">YouTube</a></li>
 </ul>
