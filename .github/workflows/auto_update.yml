@@ -2,7 +2,7 @@ name: Auto AI Review Updater
 
 on:
   schedule:
-    - cron: "0 12 * * *"  # Runs every day at noon UTC
+    - cron: "0 12 * * *"  # Runs daily at noon UTC
   workflow_dispatch:
 
 jobs:
@@ -18,7 +18,7 @@ jobs:
           python-version: "3.10"
 
       - name: Install Dependencies
-        run: pip install openai tweepy requests beautifulsoup4
+        run: pip install --upgrade openai tweepy beautifulsoup4 requests
 
       - name: Run Auto Update Script
         env:
@@ -35,6 +35,5 @@ jobs:
           git config --global user.name "AI Cash Kick Bot"
           git add index.html || true
           git commit -m "Auto-updated AI reviews $(date)" || echo "No changes to commit"
-          # Use the GITHUB_TOKEN to authenticate the push
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
           git push origin HEAD:main
