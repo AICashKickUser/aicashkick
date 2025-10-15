@@ -1,21 +1,27 @@
 import os
-import requests
-from bs4 import BeautifulSoup
-import openai
-import tweepy
 from datetime import datetime
+import openai
+from bs4 import BeautifulSoup
+import requests
+
+# Optional Twitter
+try:
+    import tweepy
+    TWITTER_ENABLED = True
+except ImportError:
+    TWITTER_ENABLED = False
 
 # -----------------------------
 # CONFIG
 # -----------------------------
 INDEX_HTML_PATH = "index.html"
-REVIEWS_SECTION_ID = "reviews"  # where new reviews will be inserted
-MAX_TOOLS = 3  # Number of tools to process each run
+REVIEWS_SECTION_ID = "reviews"  # ID where reviews are injected
+MAX_TOOLS = 3  # Number of tools to generate per run
 
+# Set OpenAI API key from environment
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 # Twitter setup (optional)
-TWITTER_ENABLED = True
 if TWITTER_ENABLED:
     auth = tweepy.OAuth1UserHandler(
         os.getenv("TWITTER_API_KEY"),
@@ -24,40 +30,42 @@ if TWITTER_ENABLED:
         os.getenv("TWITTER_ACCESS_SECRET")
     )
     twitter_api = tweepy.API(auth)
+else:
+    twitter_api = None
 
 # -----------------------------
-# 1. Get trending AI tools
+# 1. Fetch trending AI tools
 # -----------------------------
 def fetch_ai_tools():
     """
-    Fetch a small list of trending AI tools.
-    For simplicity, using a hardcoded list. 
-    Can replace with scraping or API later.
+    Example: Hardcoded list for simplicity.
+    You can replace with scraping FutureTools.io or another API.
     """
     tools = [
         {"name": "ChatGPT", "url": "https://chat.openai.com"},
         {"name": "Midjourney", "url": "https://www.midjourney.com"},
-        {"name": "Canva AI", "url": "https://www.canva.com"},
+        {"name": "Canva AI", "url": "https://www.canva.com"}
     ]
     return tools[:MAX_TOOLS]
 
 # -----------------------------
-# 2. Generate AI review using OpenAI
+# 2. Generate AI review using OpenAI v1.0+
 # -----------------------------
 def generate_review(tool_name, tool_url):
     prompt = f"""
-    Write a concise, SEO-friendly AI review for a website. Include:
+    Write a concise, SEO-friendly HTML review card for a website.
+    Include:
     - Short description of {tool_name}
-    - Pros and cons (2 each)
-    - Estimated earning potential if used for side hustles
-    - Example of usage (1 short sentence)
-    Format the output as HTML card ready to inject in a div.
+    - 2 pros and 2 cons
+    - Earning potential if used for side hustles
+    - One example usage sentence
+    Wrap everything in a <div class="review-card">...</div> ready to inject
     """
-    response = openai.ChatCompletion.create(
+    response = openai.chat.completions.create(
         model="gpt-4",
         messages=[{"role": "user", "content": prompt}],
         temperature=0.7,
-        max_tokens=300
+        max_tokens=350
     )
     html_review = response.choices[0].message.content.strip()
     return html_review
@@ -74,7 +82,7 @@ def update_index_html(new_reviews_html):
         print(f"ERROR: Could not find section with id='{REVIEWS_SECTION_ID}'")
         return
 
-    # Clear previous automated reviews (optional: comment tag)
+    # Remove previous automated reviews
     for card in reviews_section.find_all("div", class_="auto-review"):
         card.decompose()
 
@@ -86,22 +94,22 @@ def update_index_html(new_reviews_html):
                 div["class"] = div.get("class", []) + ["auto-review"]
         reviews_section.append(review_soup)
 
-    # Write back
+    # Save updated index.html
     with open(INDEX_HTML_PATH, "w", encoding="utf-8") as f:
         f.write(str(soup.prettify()))
-    print("✅ index.html updated with new reviews.")
+    print("✅ index.html updated successfully!")
 
 # -----------------------------
-# 4. Optional: Tweet new AI tools
+# 4. Optional: Tweet about new tools
 # -----------------------------
 def tweet_new_tools(tools):
-    if not TWITTER_ENABLED:
+    if not TWITTER_ENABLED or twitter_api is None:
         return
     for t in tools:
         try:
             tweet_text = f"New AI Tool Alert! 🚀 {t['name']} - Try it here: {t['url']} #AI #SideHustle"
             twitter_api.update_status(tweet_text)
-            print(f"✅ Tweeted about {t['name']}")
+            print(f"✅ Tweeted: {t['name']}")
         except Exception as e:
             print(f"⚠️ Could not tweet {t['name']}: {e}")
 
@@ -113,8 +121,11 @@ def main():
     new_reviews = []
     for tool in tools:
         print(f"Generating review for {tool['name']}...")
-        review_html = generate_review(tool["name"], tool["url"])
-        new_reviews.append(review_html)
+        try:
+            review_html = generate_review(tool["name"], tool["url"])
+            new_reviews.append(review_html)
+        except Exception as e:
+            print(f"⚠️ Failed to generate review for {tool['name']}: {e}")
 
     update_index_html(new_reviews)
     tweet_new_tools(tools)
