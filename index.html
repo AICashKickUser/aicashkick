@@ -1,313 +1,255 @@
 <!DOCTYPE html>
 <html lang="en" style="scroll-behavior:smooth;">
- <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width,initial-scale=1.0" name="viewport"/>
-  <meta content="Discover free AI tools to earn $50–$500/month. AI Cash Kick reviews the best AI-powered side hustles for creators and freelancers with in-depth reviews, examples, and affiliate opportunities." name="description"/>
-  <meta content="AI tools, side hustle, make money online, ChatGPT, Midjourney, Canva, affiliate marketing, passive income, AI tool reviews, best AI tools 2025, AI reviews for side hustles" name="keywords"/>
-  <meta content="AI Cash Kick" name="author"/>
-  <title>
-   AI Cash Kick: Free AI Tools for Side Hustles
-  </title>
-  <style>
-   /* ====== GLOBAL ====== */
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="Discover free AI tools to earn $50–$500/month. AI Cash Kick reviews the best AI-powered side hustles for creators and freelancers with in-depth reviews, examples, and affiliate opportunities.">
+<meta name="keywords" content="AI tools, side hustle, make money online, ChatGPT, Midjourney, Canva, affiliate marketing, passive income, AI tool reviews, best AI tools 2025, AI reviews for side hustles">
+<meta name="author" content="AI Cash Kick">
+<title>AI Cash Kick: Free AI Tools for Side Hustles</title>
+
+<style>
+/* ===== GLOBAL STYLES ===== */
 *{margin:0;padding:0;box-sizing:border-box;}
 :root{
   --bg:#ffffff;
-  --card:#f7f7f7;
-  --blue:#1a73e8;
-  --accent:#34a853;
+  --card:#f9f9f9;
+  --blue:#007bff;
+  --blue-glow:#339cff;
   --text:#111111;
   --gray:#555555;
-  --shadow:0 0 15px rgba(0,0,0,0.05);
+  --accent:#00b4ff;
+  --shadow:0 0 15px rgba(0,123,255,0.1);
 }
-body{
-  font-family:'Segoe UI',Tahoma,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  line-height:1.6;
-}
+body{font-family:'Segoe UI',Tahoma,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;}
 .container{max-width:1200px;margin:0 auto;padding:0 20px;}
 a{text-decoration:none;color:var(--blue);}
 a:hover{color:var(--accent);}
 
-/* ====== HEADER ====== */
-header{
-  background:#ffffff;
-  position:sticky;top:0;z-index:100;
-  box-shadow:0 2px 10px rgba(0,0,0,0.1);
-  padding:15px 0;
-}
+/* ===== HEADER ===== */
+header{background:#ffffff;position:sticky;top:0;z-index:100;box-shadow:0 2px 6px rgba(0,0,0,0.1);padding:15px 0;}
 .header-content{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;}
 .logo{font-size:1.8rem;font-weight:bold;display:flex;align-items:center;color:var(--blue);}
 .logo-icon{font-size:2rem;margin-right:10px;}
 nav ul{display:flex;list-style:none;flex-wrap:wrap;justify-content:center;}
 nav ul li{margin-left:20px;margin-bottom:10px;}
 nav ul li a{color:var(--text);padding:6px 10px;border-radius:5px;transition:all .3s;}
-nav ul li a:hover{background:rgba(26,115,232,0.1);}
+nav ul li a:hover{background:rgba(0,123,255,0.05);}
 
-/* ====== HERO ====== */
-.hero{
-  background:#f1f3f4;
-  text-align:center;
-  padding:80px 20px;
-}
-.hero h1{font-size:2.8rem;color:var(--text);}
-.hero p{font-size:1.2rem;margin:20px auto;max-width:700px;color:var(--gray);}
-.cta-button{
-  background:var(--blue);
-  color:white;
-  padding:12px 30px;
-  border-radius:40px;
-  font-weight:600;
-  transition:all .3s;
-}
-.cta-button:hover{background:var(--accent);}
+/* ===== HERO ===== */
+.hero{background:#e6f0ff;text-align:center;padding:80px 20px;border-bottom:2px solid var(--blue);}
+.hero h1{font-size:3rem;color:var(--blue-glow);}
+.hero p{font-size:1.3rem;margin:20px auto;max-width:700px;color:var(--gray);}
+.cta-button{background:var(--blue);color:white;padding:12px 30px;border-radius:40px;font-weight:600;transition:all .3s;}
+.cta-button:hover{background:var(--accent);transform:translateY(-3px);}
 
-/* ====== TOOL CARDS ====== */
+/* ===== TOOL CARDS ===== */
 section{margin:60px 0;}
-h2{
-  font-size:2rem;
-  margin-bottom:25px;
-  color:var(--text);
-  border-bottom:1px solid rgba(0,0,0,0.1);
-  padding-bottom:10px;
-}
-.tools-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-  gap:30px;
-}
-.tool-card{
-  background:var(--card);
-  border-radius:12px;
-  box-shadow:var(--shadow);
-  overflow:hidden;
-  transition:all .3s;
-}
-.tool-card:hover{transform:translateY(-4px);box-shadow:0 0 20px rgba(0,0,0,0.1);}
-.tool-header{padding:20px;border-bottom:1px solid rgba(0,0,0,0.05);}
-.tool-header h3{color:var(--blue);margin-bottom:10px;}
-.earning-potential{display:inline-block;background:var(--accent);color:white;padding:5px 15px;border-radius:20px;font-size:0.85rem;}
+h2{font-size:2rem;margin-bottom:25px;color:var(--blue);}
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;}
+.tool-card{background:var(--card);border-radius:12px;box-shadow:var(--shadow);overflow:hidden;transition:all .3s;}
+.tool-card:hover{transform:translateY(-6px);box-shadow:0 0 25px rgba(0,123,255,0.2);}
+.tool-header{padding:20px;border-bottom:1px solid #eee;}
+.tool-header h3{color:var(--accent);margin-bottom:10px;}
+.earning-potential{display:inline-block;background:var(--blue);color:white;padding:5px 15px;border-radius:20px;font-size:0.85rem;}
 .tool-image{height:180px;background-size:cover;background-position:center;}
 .tool-body{padding:20px;}
 .tool-body p{color:var(--gray);font-size:1rem;margin-bottom:10px;}
-.tool-footer{padding:20px;border-top:1px solid rgba(0,0,0,0.05);text-align:center;}
-.affiliate-link,.secondary-link{
-  display:inline-block;
-  padding:10px 20px;
-  border-radius:5px;
-  margin:5px;
-  transition:all .3s;
-  font-weight:600;
-}
-.affiliate-link{background:var(--blue);color:white;}
-.affiliate-link:hover{background:var(--accent);}
+.tool-footer{text-align:center;padding:20px;}
+.affiliate-link,.secondary-link{display:inline-block;padding:10px 20px;border-radius:5px;margin:5px;font-weight:600;transition:all .3s;}
+.affiliate-link{background:var(--blue);color:white;box-shadow:0 0 10px var(--blue);}
+.affiliate-link:hover{background:var(--accent);box-shadow:0 0 20px var(--accent);}
 .secondary-link{border:1px solid var(--blue);color:var(--blue);}
 .secondary-link:hover{background:var(--blue);color:white;}
 
-/* ====== REVIEWS ====== */
-.reviews-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-  gap:30px;
-}
-.review-card{
-  background:var(--card);
-  border-radius:12px;
-  box-shadow:var(--shadow);
-  overflow:hidden;
-  padding:20px;
-}
-.review-card h3{color:var(--blue);margin-bottom:10px;}
+/* ===== REVIEW CARDS ===== */
+.reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;}
+.review-card{background:var(--card);border-radius:12px;box-shadow:var(--shadow);overflow:hidden;transition:all .3s;padding:20px;}
+.review-card:hover{transform:translateY(-6px);box-shadow:0 0 25px rgba(0,123,255,0.2);}
+.review-card h3{color:var(--accent);margin-bottom:10px;}
 .review-card .pros-cons{display:flex;justify-content:space-between;margin:15px 0;}
 .review-card .pros-cons ul{list-style:disc;padding-left:20px;color:var(--gray);}
-.review-card .example{background:rgba(0,0,0,0.02);padding:15px;border-radius:8px;margin:15px 0;}
+.review-card .example{background:#f1f5fb;padding:15px;border-radius:8px;margin:15px 0;}
 .review-card .example code{font-family:monospace;color:var(--text);}
 
-/* ====== BUTTONS ====== */
-.archive-button{
-  display:inline-block;
-  background:var(--blue);
-  color:white;
-  padding:12px 25px;
-  border-radius:25px;
-  font-weight:600;
-  margin:20px 0;
-  text-align:center;
-  transition:all .3s;
-}
-.archive-button:hover{background:var(--accent);}
+/* ===== QUICK WINS ===== */
+.quick-wins{background:#f4f6f8;border-radius:10px;padding:30px;box-shadow:var(--shadow);}
+.quick-wins ul{list-style:none;padding:0;}
+.quick-wins li{margin-bottom:15px;color:var(--gray);}
 
-/* ====== FOOTER ====== */
-footer{
-  background:#f1f3f4;
-  padding:40px 0;
-  color:var(--gray);
-  border-top:1px solid rgba(0,0,0,0.1);
-  margin-top:60px;
-}
+/* ===== NEWSLETTER ===== */
+.newsletter{background:#e6f0ff;padding:40px;border-radius:10px;text-align:center;box-shadow:var(--shadow);}
+.newsletter input{padding:10px;border:none;border-radius:5px;width:70%;margin-bottom:10px;}
+.newsletter button{background:var(--blue);color:white;border:none;border-radius:5px;padding:10px 20px;cursor:pointer;box-shadow:0 0 10px var(--blue);}
+.newsletter button:hover{background:var(--accent);box-shadow:0 0 20px var(--accent);}
+
+/* ===== FOOTER ===== */
+footer{background:#f8f9fa;padding:40px 0;color:var(--gray);border-top:1px solid #ddd;margin-top:60px;}
 .footer-content{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;margin-bottom:20px;}
-.footer-column h3{color:var(--text);margin-bottom:15px;}
+.footer-column h3{color:var(--blue);margin-bottom:15px;}
 .footer-column a{color:var(--gray);}
-.footer-column a:hover{color:var(--blue);}
+.footer-column a:hover{color:var(--accent);}
 .copyright{text-align:center;font-size:0.9rem;color:#666;margin-top:10px;}
+</style>
+</head>
 
-/* ====== RESPONSIVE ====== */
-@media(max-width:768px){
-.hero h1{font-size:2rem;}
-.hero p{font-size:1rem;}
-nav ul{flex-direction:column;align-items:center;}
-nav ul li{margin-left:0;margin-bottom:10px;}
-}
-  </style>
- </head>
- <body>
-  <header>
-   <div class="container header-content">
-    <div class="logo">
-     <span class="logo-icon">
-      🤖
-     </span>
-     AI Cash Kick
-    </div>
-    <nav>
-     <ul>
-      <li>
-       <a href="#home">
-        Home
-       </a>
-      </li>
-      <li>
-       <a href="#top-tools">
-        Top Tools
-       </a>
-      </li>
-      <li>
-       <a href="#reviews">
-        Reviews
-       </a>
-      </li>
-      <li>
-       <a href="#quick-wins">
-        Quick Wins
-       </a>
-      </li>
-      <li>
-       <a href="#newsletter">
-        Newsletter
-       </a>
-      </li>
-      <li>
-       <a href="#about">
-        About
-       </a>
-      </li>
-     </ul>
-    </nav>
-   </div>
-  </header>
-  <!-- HERO -->
-  <section class="hero" id="home">
-   <h1>
-    Kickstart Your Income with Free AI Tools
-   </h1>
-   <p>
-    Discover AI tools to make $50–$500/month — no experience required. Start your side hustle today!
-   </p>
-   <a class="cta-button" href="#top-tools">
-    Explore AI Tools
-   </a>
-  </section>
-  <div class="container">
-   <!-- TOP TOOLS -->
-   <section id="top-tools">
-    <h2>
-     Top Free AI Tools
-    </h2>
-    <div class="tools-grid">
-     <!-- Example Tool -->
-     <div class="tool-card">
-      <div class="tool-header">
-       <h3>
-        ChatGPT
-       </h3>
-       <span class="earning-potential">
-        $50–$200/mo
-       </span>
-      </div>
-      <div class="tool-image" style="background-image:url('https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&amp;fit=crop&amp;w=800&amp;q=80');">
-      </div>
-      <div class="tool-body">
-       <p>
-        Create blogs, ads, and content with AI and sell freelance gigs.
-       </p>
-      </div>
-      <div class="tool-footer">
-       <a class="affiliate-link" href="https://chat.openai.com" target="_blank">
-        Try Free
-       </a>
-      </div>
-     </div>
-     <!-- Add other tools similarly -->
-    </div>
-   </section>
-   <!-- REVIEWS -->
-   <section id="reviews">
-    <h2>
-     In-Depth AI Tool Reviews
-    </h2>
-    <div class="reviews-grid">
-     <!-- Automated review cards will be injected here -->
-    </div>
-    <a class="archive-button" href="archive.html">
-     View All Past AI Reviews
-    </a>
-   </section>
-  </div>
-  <footer>
-   <div class="container footer-content">
-    <div class="footer-column">
-     <h3>
-      AI Cash Kick
-     </h3>
-     <p>
-      Your guide to making money with AI tools.
-     </p>
-    </div>
-    <div class="footer-column">
-     <h3>
-      Resources
-     </h3>
-     <ul>
-      <li>
-       <a href="#top-tools">
-        Top Tools
-       </a>
-      </li>
-      <li>
-       <a href="#reviews">
-        Reviews
-       </a>
-      </li>
-      <li>
-       <a href="#quick-wins">
-        Quick Wins
-       </a>
-      </li>
-      <li>
-       <a href="#about">
-        About
-       </a>
-      </li>
-     </ul>
-    </div>
-   </div>
-   <div class="copyright">
-    <p>
-     © 2025 AI Cash Kick | All rights reserved.
-    </p>
-   </div>
-  </footer>
- </body>
+<body>
+
+<header>
+<div class="container header-content">
+<div class="logo"><span class="logo-icon">🤖</span>AI Cash Kick</div>
+<nav>
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#top-tools">Top Tools</a></li>
+<li><a href="#reviews">Reviews</a></li>
+<li><a href="#quick-wins">Quick Wins</a></li>
+<li><a href="#newsletter">Newsletter</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="archive.html">All Reviews</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<!-- HERO -->
+<section id="home" class="hero">
+<h1>Kickstart Your Income with Free AI Tools</h1>
+<p>Discover AI tools to make $50–$500/month — no experience required. Start your side hustle today with honest reviews and examples.</p>
+<a href="#top-tools" class="cta-button">Explore AI Tools</a>
+</section>
+
+<!-- TOP TOOLS -->
+<div class="container">
+<section id="top-tools">
+<h2>Top Free AI Tools for Side Hustles</h2>
+<div class="tools-grid">
+
+<!-- ChatGPT -->
+<div class="tool-card">
+<div class="tool-header">
+<h3>ChatGPT</h3>
+<span class="earning-potential">$50–$200/mo</span>
+</div>
+<div class="tool-image" style="background-image:url('https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80');"></div>
+<div class="tool-body">
+<p>Create blogs, ads, and content with AI and sell freelance gigs.</p>
+</div>
+<div class="tool-footer">
+<a href="https://chat.openai.com" target="_blank" class="affiliate-link">Try ChatGPT Free</a>
+<a href="https://amzn.to/42XQVht" target="_blank" class="secondary-link">📘 ChatGPT Millionaire Book</a>
+</div>
+</div>
+
+<!-- Midjourney -->
+<div class="tool-card">
+<div class="tool-header">
+<h3>Midjourney</h3>
+<span class="earning-potential">$100–$500/mo</span>
+</div>
+<div class="tool-image" style="background-image:url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=800&q=80');"></div>
+<div class="tool-body">
+<p>Generate stunning AI art and sell prints or digital downloads.</p>
+</div>
+<div class="tool-footer">
+<a href="https://www.midjourney.com" target="_blank" class="affiliate-link">Try Midjourney</a>
+<a href="https://simplified.com?fpr=mark60" target="_blank" class="secondary-link">Simplified AI Design</a>
+</div>
+</div>
+
+<!-- Canva -->
+<div class="tool-card">
+<div class="tool-header">
+<h3>Canva AI</h3>
+<span class="earning-potential">$75–$300/mo</span>
+</div>
+<div class="tool-image" style="background-image:url('https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&w=800&q=80');"></div>
+<div class="tool-body">
+<p>Use Magic Design & Text-to-Image to make pro visuals & templates.</p>
+</div>
+<div class="tool-footer">
+<a href="https://www.canva.com" target="_blank" class="affiliate-link">Try Canva Free</a>
+<a href="https://simplified.com?fpr=mark60" target="_blank" class="secondary-link">Simplified AI Design</a>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+<h2>In-Depth AI Tool Reviews</h2>
+<p>Honest reviews of AI tools, updated automatically with examples, disruption, pros/cons, and affiliate links.</p>
+<div class="reviews-grid">
+<!-- Automation will inject review cards here -->
+</div>
+<a href="archive.html" class="cta-button" style="margin-top:20px;display:inline-block;">View All Past AI Reviews</a>
+</section>
+
+<!-- QUICK WINS -->
+<section id="quick-wins" class="quick-wins">
+<h2>Quick Wins 💸</h2>
+<ul>
+<li><strong>Sarah K:</strong> Wrote 5 posts with ChatGPT → $150 Upwork gig.</li>
+<li><strong>Alex T:</strong> Sold AI art on Etsy → $250/week profit.</li>
+<li><strong>Mike R:</strong> Used Canva AI → earned $300/month clients.</li>
+</ul>
+</section>
+
+<!-- NEWSLETTER -->
+<section id="newsletter" class="newsletter">
+<h2>Join Our AI Hustle Newsletter</h2>
+<p>Get weekly tips + free AI Hustle Starter Kit PDF 🚀</p>
+<form action="https://formspree.io/f/mdkwwykd" method="POST">
+<input type="email" name="email" placeholder="Enter your email" required>
+<br>
+<button type="submit">Subscribe Free</button>
+</form>
+</section>
+
+<!-- TIP JAR -->
+<div class="tip-jar">
+<p>Found this helpful? Support AI Cash Kick!</p>
+<a href="https://ko-fi.com/YOUR_KOFI_USERNAME" target="_blank">Buy Me a Coffee ☕</a>
+<p style="font-size:0.8rem; color:var(--gray);">Note: Replace 'YOUR_KOFI_USERNAME' with your Ko-fi username.</p>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+<h2>About AI Cash Kick</h2>
+<p>Founded in 2025, AI Cash Kick helps everyday people earn $50–$500/month with AI tools — no tech skills needed. We review, test, and share the best AI side hustles online with automated updates for the latest tools.</p>
+<p>💡 Affiliate disclosure: Some links earn a small commission at no extra cost to you.</p>
+</section>
+
+<footer>
+<div class="container footer-content">
+<div class="footer-column">
+<h3>AI Cash Kick</h3>
+<p>Your guide to making money with AI tools and side hustles.</p>
+</div>
+<div class="footer-column">
+<h3>Resources</h3>
+<ul>
+<li><a href="#top-tools">Top Tools</a></li>
+<li><a href="#reviews">Reviews</a></li>
+<li><a href="#quick-wins">Quick Wins</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="archive.html">All Reviews</a></li>
+</ul>
+</div>
+<div class="footer-column">
+<h3>Follow</h3>
+<ul>
+<li><a href="https://x.com/AIcashkick" target="_blank">X / Twitter</a></li>
+<li><a href="#">Instagram</a></li>
+<li><a href="#">YouTube</a></li>
+</ul>
+</div>
+</div>
+<div class="copyright">
+<p>© 2025 AI Cash Kick  |  All rights reserved.</p>
+</div>
+</footer>
+
+</body>
 </html>
