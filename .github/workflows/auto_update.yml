@@ -15,10 +15,10 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: 3.10
+          python-version: "3.10"
 
       - name: Install Dependencies
-        run: pip install openai tweepy requests
+        run: pip install openai tweepy requests beautifulsoup4
 
       - name: Run Auto Update Script
         env:
@@ -34,5 +34,5 @@ jobs:
           git config --global user.email "bot@aicashkick.com"
           git config --global user.name "AI Cash Kick Bot"
           git add index.html
-          git commit -m "Auto-updated AI reviews $(date)"
+          git commit -m "Auto-updated AI reviews $(date)" || echo "No changes to commit"
           git push
