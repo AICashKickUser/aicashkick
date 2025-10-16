@@ -22,12 +22,11 @@ jobs:
         run: |
           pip install --upgrade pip
           pip uninstall -y openai || true
-          pip install "openai==1.13.3" --no-cache-dir
+          rm -rf ~/.cache/pip  # ensure no cache
+          pip install "openai==1.12.0" --no-cache-dir
           pip install tweepy requests beautifulsoup4
-
-      - name: Debug Check installed OpenAI version
-        run: |
           python -c "import openai; print('✅ OpenAI version:', openai.__version__)"
+
 
       - name: Run auto_update.py
         env:
