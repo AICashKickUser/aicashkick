@@ -23,7 +23,10 @@ jobs:
       - name: Install dependencies
         run: |
           pip install --upgrade pip
-          pip install --force-reinstall "openai==1.13.3" tweepy requests beautifulsoup4
+          pip uninstall -y openai
+          pip install "openai==1.13.3" --no-cache-dir
+          pip install tweepy requests beautifulsoup4
+
 
 
       - name: Run auto-update script
