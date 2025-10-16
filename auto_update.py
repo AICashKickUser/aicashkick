@@ -1,8 +1,9 @@
-import os, requests, re
-from bs4 import BeautifulSoup
+import os
 from openai import OpenAI
 
+# Create OpenAI client (no proxies param)
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
 
 AI_SOURCES = [
     {"name": "ChatGPT", "url": "https://chat.openai.com"},
