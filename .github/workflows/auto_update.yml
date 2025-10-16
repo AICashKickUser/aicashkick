@@ -25,7 +25,7 @@ jobs:
           pip install "openai==1.13.3" --no-cache-dir
           pip install tweepy requests beautifulsoup4
 
-      - name: Debug: Check installed OpenAI version
+      - name: Debug Check installed OpenAI version
         run: |
           python -c "import openai; print('✅ OpenAI version:', openai.__version__)"
 
