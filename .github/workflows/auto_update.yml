@@ -2,17 +2,15 @@ name: Auto AI Review Updater
 
 on:
   schedule:
-    - cron: "0 12 * * *" # runs every day at noon UTC
-  workflow_dispatch:
+    - cron: "0 */6 * * *"   # Every 6 hours
+  workflow_dispatch:        # Allow manual trigger from Actions tab
 
 jobs:
   update-reviews:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
 
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Set up Python
@@ -20,16 +18,18 @@ jobs:
         with:
           python-version: "3.10"
 
-      - name: Install dependencies
+      - name: Install dependencies (clean)
         run: |
           pip install --upgrade pip
-          pip uninstall -y openai
+          pip uninstall -y openai || true
           pip install "openai==1.13.3" --no-cache-dir
           pip install tweepy requests beautifulsoup4
 
+      - name: Debug: Check installed OpenAI version
+        run: |
+          python -c "import openai; print('✅ OpenAI version:', openai.__version__)"
 
-
-      - name: Run auto-update script
+      - name: Run auto_update.py
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           TWITTER_API_KEY: ${{ secrets.TWITTER_API_KEY }}
@@ -38,10 +38,10 @@ jobs:
           TWITTER_ACCESS_SECRET: ${{ secrets.TWITTER_ACCESS_SECRET }}
         run: python auto_update.py
 
-      - name: Commit and push changes
+      - name: Commit and push updates
         run: |
-          git config user.name "AI Cash Kick Bot"
-          git config user.email "bot@aicashkick.com"
-          git add index.html
-          git commit -m "Auto-update reviews $(date)" || echo "No changes"
-          git push
+          git config --global user.name "AICashKickBot"
+          git config --global user.email "bot@aicashkick.com"
+          git add index.html archive.html || true
+          git commit -m "🤖 Auto-updated AI reviews" || echo "No changes to commit"
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
