@@ -2,21 +2,21 @@ name: Auto AI Review Updater
 
 on:
   schedule:
-    - cron: "0 */6 * * *"   # Every 6 hours
-  workflow_dispatch:        # Allow manual trigger from Actions tab
+    - cron: "0 12 * * *"
+  workflow_dispatch:
 
 jobs:
   update-reviews:
-    runs-on: ubuntu-latest
-
+    runs-on: ubuntu-22.04   # ← switch runner
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - name: Checkout Repo
+        uses: actions/checkout@v3
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v4
         with:
-          python-version: "3.10"
+          python-version: "3.9"   # ← older compatible interpreter
+
 
       - name: Clean and Install Dependencies
         run: |
