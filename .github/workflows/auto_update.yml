@@ -3,7 +3,7 @@ name: Auto AI Review Updater
 on:
   schedule:
     - cron: "0 12 * * *"  # Daily at noon UTC
-  workflow_dispatch:  # Manual trigger
+  workflow_dispatch:
 
 jobs:
   update-reviews:
@@ -34,5 +34,5 @@ jobs:
         uses: EndBug/add-and-commit@v9
         with:
           add: '*.html'
-          message: '🤖 Auto-updated AI reviews'
+          message: '🤖 Auto-updated AI reviews - ${{ github.run_number }}'
           push: true
