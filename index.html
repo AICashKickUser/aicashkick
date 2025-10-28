@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en" style="scroll-behavior:smooth;">
 <head>
 <meta charset="utf-8"/>
@@ -25,7 +24,6 @@ body{font-family:'Segoe UI',Tahoma,sans-serif;background:var(--bg);color:var(--t
 .container{max-width:1200px;margin:0 auto;padding:0 20px;}
 a{text-decoration:none;color:var(--blue);}
 a:hover{color:var(--accent);}
-
 /* ===== HEADER ===== */
 header{background:#ffffff;position:sticky;top:0;z-index:100;box-shadow:0 2px 6px rgba(0,0,0,0.1);padding:15px 0;}
 .header-content{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;}
@@ -35,14 +33,12 @@ nav ul{display:flex;list-style:none;flex-wrap:wrap;justify-content:center;}
 nav ul li{margin-left:20px;margin-bottom:10px;}
 nav ul li a{color:var(--text);padding:6px 10px;border-radius:5px;transition:all .3s;}
 nav ul li a:hover{background:rgba(0,123,255,0.05);}
-
 /* ===== HERO ===== */
 .hero{background:#e6f0ff;text-align:center;padding:80px 20px;border-bottom:2px solid var(--blue);}
 .hero h1{font-size:3rem;color:var(--blue-glow);}
 .hero p{font-size:1.3rem;margin:20px auto;max-width:700px;color:var(--gray);}
 .cta-button{background:var(--blue);color:white;padding:12px 30px;border-radius:40px;font-weight:600;transition:all .3s;}
 .cta-button:hover{background:var(--accent);transform:translateY(-3px);}
-
 /* ===== TOOL CARDS ===== */
 section{margin:60px 0;}
 h2{font-size:2rem;margin-bottom:25px;color:var(--blue);}
@@ -61,7 +57,6 @@ h2{font-size:2rem;margin-bottom:25px;color:var(--blue);}
 .affiliate-link:hover{background:var(--accent);box-shadow:0 0 20px var(--accent);}
 .secondary-link{border:1px solid var(--blue);color:var(--blue);}
 .secondary-link:hover{background:var(--blue);color:white;}
-
 /* ===== REVIEW CARDS ===== */
 .reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;}
 .review-card{background:var(--card);border-radius:12px;box-shadow:var(--shadow);overflow:hidden;transition:all .3s;padding:20px;}
@@ -71,18 +66,16 @@ h2{font-size:2rem;margin-bottom:25px;color:var(--blue);}
 .review-card .pros-cons ul{list-style:disc;padding-left:20px;color:var(--gray);}
 .review-card .example{background:#f1f5fb;padding:15px;border-radius:8px;margin:15px 0;}
 .review-card .example code{font-family:monospace;color:var(--text);}
-
+.stars {color: gold; font-size: 1.2rem;} /* Added for ratings */
 /* ===== QUICK WINS ===== */
 .quick-wins{background:#f4f6f8;border-radius:10px;padding:30px;box-shadow:var(--shadow);}
 .quick-wins ul{list-style:none;padding:0;}
 .quick-wins li{margin-bottom:15px;color:var(--gray);}
-
 /* ===== NEWSLETTER ===== */
 .newsletter{background:#e6f0ff;padding:40px;border-radius:10px;text-align:center;box-shadow:var(--shadow);}
 .newsletter input{padding:10px;border:none;border-radius:5px;width:70%;margin-bottom:10px;}
 .newsletter button{background:var(--blue);color:white;border:none;border-radius:5px;padding:10px 20px;cursor:pointer;box-shadow:0 0 10px var(--blue);}
 .newsletter button:hover{background:var(--accent);box-shadow:0 0 20px var(--accent);}
-
 /* ===== FOOTER ===== */
 footer{background:#f8f9fa;padding:40px 0;color:var(--gray);border-top:1px solid #ddd;margin-top:60px;}
 .footer-content{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;margin-bottom:20px;}
@@ -90,6 +83,13 @@ footer{background:#f8f9fa;padding:40px 0;color:var(--gray);border-top:1px solid 
 .footer-column a{color:var(--gray);}
 .footer-column a:hover{color:var(--accent);}
 .copyright{text-align:center;font-size:0.9rem;color:#666;margin-top:10px;}
+/* ===== NEW: FAQ ===== */
+.faq {background: #f9f9f9; padding: 30px; border-radius: 10px;}
+.faq details {margin-bottom: 15px; cursor: pointer;}
+.faq summary {font-weight: bold; color: var(--blue);}
+/* ===== NEW: FEATURED HUSTLE ===== */
+.featured-hustle {background: #e6f0ff; padding: 30px; border-radius: 10px; text-align: center;}
+.featured-hustle ol {text-align: left; max-width: 600px; margin: 20px auto;}
 </style>
 </head>
 <body>
@@ -126,7 +126,7 @@ footer{background:#f8f9fa;padding:40px 0;color:var(--gray);border-top:1px solid 
 <h3>ChatGPT</h3>
 <span class="earning-potential">$50–$200/mo</span>
 </div>
-<div class="tool-image" style="background-image:url('https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&amp;fit=crop&amp;w=800&amp;q=80');"></div>
+<div class="tool-image" style="background-image:url('https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&amp;fit=crop&amp;w=800&amp;q=80');" aria-label="ChatGPT AI interface"></div>
 <div class="tool-body">
 <p>Create blogs, ads, and content with AI and sell freelance gigs.</p>
 </div>
@@ -141,7 +141,7 @@ footer{background:#f8f9fa;padding:40px 0;color:var(--gray);border-top:1px solid 
 <h3>Midjourney</h3>
 <span class="earning-potential">$100–$500/mo</span>
 </div>
-<div class="tool-image" style="background-image:url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&amp;fit=crop&amp;w=800&amp;q=80');"></div>
+<div class="tool-image" style="background-image:url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&amp;fit=crop&amp;w=800&amp;q=80');" aria-label="AI-generated art"></div>
 <div class="tool-body">
 <p>Generate stunning AI art and sell prints or digital downloads.</p>
 </div>
@@ -156,7 +156,7 @@ footer{background:#f8f9fa;padding:40px 0;color:var(--gray);border-top:1px solid 
 <h3>Canva AI</h3>
 <span class="earning-potential">$75–$300/mo</span>
 </div>
-<div class="tool-image" style="background-image:url('https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&amp;fit=crop&amp;w=800&amp;q=80');"></div>
+<div class="tool-image" style="background-image:url('https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&amp;fit=crop&amp;w=800&amp;q=80');" aria-label="Canva design tools"></div>
 <div class="tool-body">
 <p>Use Magic Design &amp; Text-to-Image to make pro visuals &amp; templates.</p>
 </div>
@@ -174,41 +174,55 @@ footer{background:#f8f9fa;padding:40px 0;color:var(--gray);border-top:1px solid 
 <div class="reviews-grid" id="reviews-grid">
 <div class="review-card">
 <h3>Review: Gemini (Updated Oct 2025)</h3>
-<p>Earnings potential: $100–$400/mo</p>
+<p>Earnings potential: $100–$400/mo <span class="stars">★★★★☆</span></p>
 <div class="pros-cons">
-<ul><li>Easy to use for beginners</li><li>Fast content generation</li><li>Integrates with social media</li></ul>
-<ul><li>Free tier limits advanced features</li></ul>
+<ul><li>Multimodal AI handles text, images, and code seamlessly</li><li>Free access with Google account integration</li><li>Great for brainstorming business ideas quickly</li></ul>
+<ul><li>Limited customization in free tier</li><li>Occasional hallucinations in complex queries</li></ul>
 </div>
-<div class="example"><code>Example: Use Gemini to create Pinterest pins and sell scheduling services on Fiverr for $50/project.</code></div>
-<p>Disruption: Transforms manual marketing into automated hustles, saving hours weekly.</p>
+<div class="example"><code>Example: Generate SEO-optimized blog outlines for affiliate sites, then freelance on Upwork for $100+ per article.</code></div>
+<p>Disruption: Speeds up content creation by 5x, turning hobbyists into pro marketers without coding skills.</p>
 <a class="affiliate-link" href="https://gemini.google.com" target="_blank">Try Gemini Now</a>
 </div>
-
 <div class="review-card">
 <h3>Review: Jasper (Updated Oct 2025)</h3>
-<p>Earnings potential: $100–$400/mo</p>
+<p>Earnings potential: $150–$500/mo <span class="stars">★★★★★</span></p>
 <div class="pros-cons">
-<ul><li>Easy to use for beginners</li><li>Fast content generation</li><li>Integrates with social media</li></ul>
-<ul><li>Free tier limits advanced features</li></ul>
+<ul><li>Templates for ads, emails, and social posts save time</li><li>Brand voice customization for consistent output</li><li>SEO tools built-in for better rankings</li></ul>
+<ul><li>Subscription required for full features (starts at $49/mo)</li><li>Can feel generic without fine-tuning</li></ul>
 </div>
-<div class="example"><code>Example: Use Jasper to create Pinterest pins and sell scheduling services on Fiverr for $50/project.</code></div>
-<p>Disruption: Transforms manual marketing into automated hustles, saving hours weekly.</p>
+<div class="example"><code>Example: Craft engaging LinkedIn posts for clients, charging $200/month for ongoing content management.</code></div>
+<p>Disruption: Automates copywriting, letting freelancers scale from 1-2 clients to 10+ without burnout.</p>
 <a class="affiliate-link" href="https://jasper.ai" target="_blank">Try Jasper Now</a>
 </div>
-
 <div class="review-card">
 <h3>Review: Filmora (Updated Oct 2025)</h3>
-<p>Earnings potential: $100–$400/mo</p>
+<p>Earnings potential: $75–$350/mo <span class="stars">★★★★☆</span></p>
 <div class="pros-cons">
-<ul><li>Easy to use for beginners</li><li>Fast content generation</li><li>Integrates with social media</li></ul>
-<ul><li>Free tier limits advanced features</li></ul>
+<ul><li>AI effects like auto-editing and music sync for quick videos</li><li>User-friendly interface for non-pros</li><li>Export in multiple formats for YouTube/TikTok</li></ul>
+<ul><li>Watermarks on free version</li><li>Advanced features need pro upgrade</li></ul>
 </div>
-<div class="example"><code>Example: Use Filmora to create Pinterest pins and sell scheduling services on Fiverr for $50/project.</code></div>
-<p>Disruption: Transforms manual marketing into automated hustles, saving hours weekly.</p>
+<div class="example"><code>Example: Edit short tutorial videos on AI tools, upload to YouTube, and monetize via ads/affiliates for $200/mo passive income.</code></div>
+<p>Disruption: Democratizes video production, enabling creators to compete with pros on a budget.</p>
 <a class="affiliate-link" href="https://filmora.wondershare.com" target="_blank">Try Filmora Now</a>
 </div>
 </div>
 <a class="cta-button" href="archive.html" style="margin-top:20px;display:inline-block;">View All Past AI Reviews</a>
+</section>
+<!-- NEW: FAQ -->
+<section class="faq" id="faq">
+<h2>FAQ: Getting Started with AI Side Hustles</h2>
+<details>
+<summary>How do I start with no experience?</summary>
+<p>Pick a free tool like ChatGPT, follow tutorials, and offer services on Fiverr starting at $5/gig.</p>
+</details>
+<details>
+<summary>What's the best tool for beginners?</summary>
+<p>Canva AI—easy drag-and-drop with magic features for quick designs.</p>
+</details>
+<details>
+<summary>Can I really make $500/mo?</summary>
+<p>Yes, with consistency: Build a portfolio, market on social, and scale clients.</p>
+</details>
 </section>
 <!-- QUICK WINS -->
 <section class="quick-wins" id="quick-wins">
@@ -218,6 +232,19 @@ footer{background:#f8f9fa;padding:40px 0;color:var(--gray);border-top:1px solid 
 <li><strong>Alex T:</strong> Sold AI art on Etsy → $250/week profit.</li>
 <li><strong>Mike R:</strong> Used Canva AI → earned $300/month clients.</li>
 </ul>
+</section>
+<!-- NEW: FEATURED HUSTLE -->
+<section class="featured-hustle">
+<h2>Featured Hustle: AI Content Creation</h2>
+<p>Turn words into cash—step-by-step guide to earn $100+ your first week.</p>
+<ol>
+<li>Sign up for free ChatGPT.</li>
+<li>Generate 3 blog ideas on trending topics.</li>
+<li>Write and post on Medium; add affiliate links.</li>
+<li>Promote on Reddit/X for traffic.</li>
+<li>Track earnings and repeat!</li>
+</ol>
+<a class="cta-button" href="#top-tools">Start Now</a>
 </section>
 <!-- NEWSLETTER -->
 <section class="newsletter" id="newsletter">
@@ -267,7 +294,7 @@ footer{background:#f8f9fa;padding:40px 0;color:var(--gray);border-top:1px solid 
 </div>
 </div>
 <div class="copyright">
-<p>© 2025 AI Cash Kick  |  All rights reserved.</p>
+<p>© 2025 AI Cash Kick | All rights reserved.</p>
 </div>
 </footer>
 </div></body>
