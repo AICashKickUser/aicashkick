@@ -9,24 +9,23 @@
     gtag('js', new Date());
     gtag('config', 'G-6C8HN2B93T');
     </script>
-    
+   
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-    <meta name="description" content="Real-time Case Study: Watch me go from $0 to $100 with AI tools. Honest reviews, failures included."/>
+    <meta name="description" content="Real-time Case Study: Watch me go from $0 to $100 with AI tools. Honest reviews, failures included. Daily AI tool reviews for side hustles."/>
     <title>AI Cash Kick | The Real-Time $0 → $100 AI Challenge</title>
-    
+   
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
     <style>
         /* --- RESET & VARS --- */
         :root{
             --bg:#ffffff;
             --card-bg:#f8f9fa;
-            --primary:#0066ff;     /* Trustworthy Blue */
-            --accent:#00d4ff;      /* Tech Cyan */
-            --success:#00c853;     /* Money Green */
-            --danger:#ff3d00;      /* Alert Red */
+            --primary:#0066ff; /* Trustworthy Blue */
+            --accent:#00d4ff; /* Tech Cyan */
+            --success:#00c853; /* Money Green */
+            --danger:#ff3d00; /* Alert Red */
             --text:#2d3436;
             --gray:#636e72;
             --shadow:0 10px 20px rgba(0,0,0,0.08);
@@ -35,22 +34,22 @@
         *{margin:0;padding:0;box-sizing:border-box;}
         body{font-family:'Segoe UI', system-ui, sans-serif; background:var(--bg); color:var(--text); line-height:1.6; padding-bottom: 50px;}
         a{text-decoration:none; color:inherit; transition:0.3s;}
-        
+       
         /* --- LAYOUT --- */
         .container{max-width:1100px; margin:0 auto; padding:0 20px;}
         section{margin: 80px 0;}
-        
+       
         /* --- HEADER --- */
         header{background:rgba(255,255,255,0.95); position:sticky; top:0; z-index:1000; border-bottom:1px solid #eee; backdrop-filter: blur(10px);}
         .nav-wrapper{display:flex; justify-content:space-between; align-items:center; padding:15px 0;}
         .logo{font-size:1.5rem; font-weight:800; color:var(--primary); display:flex; align-items:center; gap:10px;}
         .logo i { color: var(--text); }
-        
+       
         nav ul{display:flex; list-style:none; gap:25px;}
         nav a{font-weight:500; font-size:0.95rem; color:var(--gray);}
         nav a:hover{color:var(--primary);}
         .nav-cta { background: var(--primary); color: white !important; padding: 8px 18px; border-radius: 50px; }
-        
+       
         /* --- HERO --- */
         .hero{text-align:center; padding: 80px 20px 40px; background: linear-gradient(180deg, #f0f7ff 0%, #ffffff 100%);}
         .hero h1{font-size: clamp(2.5rem, 5vw, 3.5rem); line-height:1.1; margin-bottom:20px; color: #1a1a1a;}
@@ -61,74 +60,78 @@
         .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,102,255,0.4); }
         .btn-outline { border: 2px solid var(--primary); color: var(--primary); background: transparent; }
         .btn-outline:hover { background: var(--primary); color: white; }
-
         /* --- CHALLENGE DASHBOARD (New) --- */
         .dashboard { background: #1e1e1e; color: white; border-radius: var(--radius); padding: 30px; margin-top: -20px; box-shadow: var(--shadow); position: relative; overflow: hidden; }
         .dashboard-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #333; padding-bottom: 20px; margin-bottom: 20px; flex-wrap: wrap; gap: 20px;}
         .status-badge { background: var(--success); color: white; padding: 5px 12px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
         .status-badge.failed { background: var(--danger); }
-        
+       
         .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
         .stat-box h3 { font-size: 0.9rem; color: #888; margin-bottom: 5px; text-transform: uppercase; }
         .stat-box .value { font-size: 2rem; font-weight: 700; }
         .stat-box .value.green { color: var(--success); }
-        
+       
         .pivot-alert { background: rgba(255, 61, 0, 0.1); border: 1px solid var(--danger); color: #ff3d00; padding: 15px; border-radius: 8px; margin-top: 20px; display: flex; align-items: flex-start; gap: 10px; }
         .pivot-alert i { margin-top: 4px; }
-
         /* --- TOOL CARDS --- */
         .section-title { text-align: center; margin-bottom: 50px; }
         .section-title h2 { font-size: 2.2rem; margin-bottom: 10px; }
         .section-title p { color: var(--gray); }
-
         .tools-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:30px;}
         .tool-card{background:white; border: 1px solid #eee; border-radius:var(--radius); overflow:hidden; transition:0.3s; position: relative;}
         .tool-card:hover{transform:translateY(-5px); box-shadow:var(--shadow); border-color: var(--primary);}
-        
+       
         .tool-img { height: 160px; background-size: cover; background-position: center; position: relative;}
         .tag { position: absolute; top: 15px; right: 15px; background: rgba(0,0,0,0.7); color: white; padding: 4px 10px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; }
-        
+       
         .tool-content { padding: 25px; }
         .tool-content h3 { font-size: 1.4rem; margin-bottom: 5px; display: flex; justify-content: space-between; }
         .earning { color: var(--success); font-size: 0.9rem; font-weight: 600; display: block; margin-bottom: 15px;}
         .tool-content p { font-size: 0.95rem; color: var(--gray); margin-bottom: 20px; min-height: 60px; }
-        
+       
         .card-actions { display: flex; gap: 10px; }
         .card-btn { flex: 1; text-align: center; padding: 10px; border-radius: 6px; font-size: 0.9rem; font-weight: 600; }
         .card-btn.main { background: var(--primary); color: white; }
         .card-btn.sub { background: #f1f3f5; color: var(--text); }
         .card-btn.sub:hover { background: #e9ecef; }
-
         /* --- DAILY PROMPT --- */
         .prompt-box { background: #2d3436; color: #dfe6e9; padding: 40px; border-radius: var(--radius); text-align: center; position: relative; overflow: hidden;}
         .prompt-text { font-family: 'Courier New', monospace; font-size: 1.1rem; background: rgba(255,255,255,0.1); padding: 20px; border-radius: 8px; margin: 20px 0; border: 1px dashed #636e72; }
         .copy-btn { background: var(--success); color: white; border: none; padding: 8px 20px; border-radius: 4px; cursor: pointer; font-weight: bold; transition: 0.2s; }
         .copy-btn:hover { background: #00b84c; }
         .copy-btn:active { transform: scale(0.98); }
-
         /* --- NEWSLETTER --- */
         .newsletter-box { background: linear-gradient(135deg, var(--primary), var(--accent)); padding: 60px 20px; border-radius: var(--radius); text-align: center; color: white; }
         .newsletter-box h2 { color: white; }
         .newsletter-box input { padding: 15px; border-radius: 30px; border: none; width: 100%; max-width: 300px; outline: none; }
         .newsletter-box button { padding: 15px 30px; border-radius: 30px; border: none; background: #1a1a1a; color: white; cursor: pointer; font-weight: bold; margin-top: 10px; }
-        
+       
         /* --- FOOTER --- */
         footer { background: #f8f9fa; padding: 60px 0 20px; border-top: 1px solid #eee; color: var(--gray); font-size: 0.9rem; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px;}
         .footer-col h4 { color: var(--text); margin-bottom: 15px; font-size: 1.1rem; }
         .footer-col ul { list-style: none; }
         .footer-col li { margin-bottom: 10px; }
-        
+       
         /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
             nav { display: none; } /* Simplified mobile menu hidden for now */
             .hero h1 { font-size: 2rem; }
             .dashboard-header { flex-direction: column; align-items: flex-start; }
         }
+
+        /* --- LIVE BLOG SECTION --- */
+        .live-blog { background: var(--card-bg); border-radius: var(--radius); padding: 40px; margin: 40px 0; box-shadow: var(--shadow); }
+        .live-blog h2 { font-size: 2.2rem; margin-bottom: 30px; }
+        .blog-post { background: white; border: 1px solid #eee; border-radius: 8px; padding: 25px; margin-bottom: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .blog-post h3 { font-size: 1.5rem; margin-bottom: 10px; }
+        .blog-post .date { font-size: 0.9rem; color: var(--gray); margin-bottom: 15px; display: block; }
+        .blog-post p { margin-bottom: 15px; }
+        .blog-post .affiliate { color: var(--primary); font-weight: 600; }
+        .blog-post .cta { display: inline-block; background: var(--success); color: white; padding: 8px 16px; border-radius: 4px; margin-top: 10px; }
     </style>
 </head>
 <body>
-
     <!-- NAV -->
     <header>
         <div class="container nav-wrapper">
@@ -139,11 +142,11 @@
                     <li><a href="#tools">Tools</a></li>
                     <li><a href="#daily-prompt">Daily Prompt</a></li>
                     <li><a href="#newsletter" class="nav-cta">Join Newsletter</a></li>
+                    <li><a href="#live-blog">Live Blog</a></li> <!-- New nav link -->
                 </ul>
             </nav>
         </div>
     </header>
-
     <!-- HERO -->
     <section class="hero">
         <div class="container">
@@ -155,7 +158,6 @@
             </div>
         </div>
     </section>
-
     <!-- LIVE DASHBOARD -->
     <div class="container" id="dashboard">
         <div class="dashboard">
@@ -169,7 +171,6 @@
                     <strong>Nov 22, 2025</strong>
                 </div>
             </div>
-
             <div class="stats-grid">
                 <div class="stat-box">
                     <h3>Current Balance</h3>
@@ -184,14 +185,13 @@
                     <div class="value" style="font-size: 1.2rem; line-height: 1.5;">Freelance Services</div>
                 </div>
             </div>
-
             <!-- THE FAILURE PIVOT ALERT -->
             <div class="pivot-alert">
                 <i class="fa-solid fa-triangle-exclamation"></i>
                 <div>
-                    <strong>Why Attempt #1 Failed (Redbubble):</strong> 
+                    <strong>Why Attempt #1 Failed (Redbubble):</strong>
                     <p style="font-size: 0.9rem; margin-top: 5px; color: #ff3d00;">
-                        I uploaded 20+ designs. Traffic was decent (200+ views) but 0 sales. 
+                        I uploaded 20+ designs. Traffic was decent (200+ views) but 0 sales.
                         <strong>Lesson:</strong> Passive income takes months. I need quick wins.
                         <br>
                         <strong>New Strategy:</strong> Using AI to provide specific services (Transcription & Video Editing) for immediate client payments.
@@ -200,22 +200,20 @@
             </div>
         </div>
     </div>
-
     <!-- DAILY PROMPT -->
     <section id="daily-prompt">
         <div class="container">
             <div class="prompt-box">
                 <h2><i class="fa-solid fa-terminal"></i> Today's Money-Making Prompt</h2>
                 <p style="opacity: 0.8;">Use this in ChatGPT/Claude to generate service ideas.</p>
-                
+               
                 <div class="prompt-text" id="promptText">"Act as a freelance consultant. Analyze the top 5 most in-demand services on Upwork this week that can be fulfilled using AI tools like Fireflies or Midjourney, and write a proposal template for one of them."</div>
-                
+               
                 <button class="copy-btn" onclick="copyPrompt()"><i class="fa-regular fa-copy"></i> Copy to Clipboard</button>
                 <p id="copyConfirm" style="display:none; color: var(--success); margin-top: 10px; font-size: 0.8rem;">Copied!</p>
             </div>
         </div>
     </section>
-
     <!-- TOOLS GRID -->
     <section id="tools">
         <div class="container">
@@ -223,9 +221,8 @@
                 <h2>The Tool Stack</h2>
                 <p>Categorized by earning potential and cost.</p>
             </div>
-
             <div class="tools-grid">
-                
+               
                 <!-- Tool 1: ChatGPT -->
                 <div class="tool-card">
                     <div class="tool-img" style="background-image:url('https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600');">
@@ -241,7 +238,6 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- Tool 2: Midjourney -->
                 <div class="tool-card">
                     <div class="tool-img" style="background-image:url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600');">
@@ -256,7 +252,6 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- Tool 3: Fireflies -->
                 <div class="tool-card">
                     <div class="tool-img" style="background-image:url('https://images.unsplash.com/photo-1525182008055-f88b95ff7980?w=600');">
@@ -271,7 +266,6 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- Tool 4: Descript -->
                 <div class="tool-card">
                     <div class="tool-img" style="background-image:url('https://images.unsplash.com/photo-1612831455540-8df183e9a270?w=600');">
@@ -286,7 +280,7 @@
                         </div>
                     </div>
                 </div>
-                
+               
                 <!-- Tool 5: VidIQ -->
                 <div class="tool-card">
                     <div class="tool-img" style="background-image:url('https://images.unsplash.com/photo-1605902711622-cfb43c44379b?w=600');">
@@ -301,11 +295,36 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
-
+    <!-- LIVE BLOG SECTION (New) -->
+    <section id="live-blog" class="live-blog">
+        <div class="container">
+            <div class="section-title">
+                <h2>Live Blog: Daily AI Tool Reviews & Hustle Updates</h2>
+                <p>Auto-posted by AI agent: Honest reviews of new tools + how I'm using them for side hustles. Updated daily with fresh finds.</p>
+            </div>
+            <!-- Blog Posts Go Here (AI agent can generate + insert new <article> blocks) -->
+            <article class="blog-post">
+                <h3>Day 1: Synthesia - AI Video Creator</h3>
+                <span class="date">Nov 23, 2025</span>
+                <p>Synthesia lets you create pro videos with AI avatars. Tested for freelance gig: Made a 1-min script for client pitch — took 10 mins, no editing skills needed.</p>
+                <p><strong>Pros:</strong> Easy avatars, multi-language. <strong>Cons:</strong> Free tier limited. <strong>Earning Potential:</strong> $50–$200/video gig on Upwork.</p>
+                <a href="https://www.synthesia.io/?via=aicashkick" target="_blank" class="affiliate">Try Synthesia (Affiliate)</a>
+                <a href="#newsletter" class="cta">Get Update Alerts</a>
+            </article>
+            <article class="blog-post">
+                <h3>Day 2: ElevenLabs - AI Voiceovers</h3>
+                <span class="date">Nov 24, 2025</span>
+                <p>ElevenLabs generates realistic voices. Hustle idea: Offer podcast editing services — convert text to pro audio in seconds.</p>
+                <p><strong>Pros:</strong> Natural voices, cheap. <strong>Cons:</strong> Ethical use needed. <strong>Earning Potential:</strong> $30/hr freelance audio gigs.</p>
+                <a href="https://elevenlabs.io/?from=aicashkick" target="_blank" class="affiliate">Try ElevenLabs (Affiliate)</a>
+                <a href="#newsletter" class="cta">Get Update Alerts</a>
+            </article>
+            <!-- Add more <article> blocks here via AI agent script or manual edit -->
+        </div>
+    </section>
     <!-- NEWSLETTER -->
     <section id="newsletter">
         <div class="container">
@@ -320,7 +339,6 @@
             </div>
         </div>
     </section>
-
     <!-- FOOTER -->
     <footer>
         <div class="container">
@@ -350,25 +368,21 @@
             </div>
         </div>
     </footer>
-
     <!-- SCRIPTS -->
     <script>
         function copyPrompt() {
             // Get the text field
             var copyText = document.getElementById("promptText").innerText;
             var cleanText = copyText.replace(/^"|"$/g, ''); // Remove surrounding quotes if desired
-
             // Copy the text inside the text field
             navigator.clipboard.writeText(cleanText);
-
             // Show confirmation
             var x = document.getElementById("copyConfirm");
             x.style.display = "block";
-            
+           
             // Hide after 2 seconds
             setTimeout(function(){ x.style.display = "none"; }, 2000);
         }
     </script>
-
 </body>
 </html>
