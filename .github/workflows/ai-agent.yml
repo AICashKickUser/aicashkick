@@ -1,0 +1,45 @@
+# .github/workflows/ai-agent.yml
+
+name: AI Tool Discovery and Publisher
+
+# Run this workflow every day at 9:00 AM Los Angeles time (5:00 PM UTC)
+on:
+  schedule:
+    - cron: '0 17 * * *' 
+  workflow_dispatch: # Allows you to run it manually from the GitHub UI
+
+jobs:
+  discover-and-publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # This allows the action to commit to your repo
+
+    steps:
+      # Step 1: Check out the repository code
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      # Step 3: Install dependencies (we only need axios for this)
+      - name: Install dependencies
+        run: npm install axios
+
+      # Step 4: Run the main script to find, review, and publish tools
+      - name: Run AI Agent Script
+        env:
+          # IMPORTANT: Add your API keys as "Secrets" in your GitHub repo settings
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node .github/scripts/ai-agent.js
+
+      # Step 5: Upload the generated HTML as an artifact (optional, for easy viewing)
+      - name: Upload review artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: daily-ai-review
+          path: reviews/
