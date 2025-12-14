@@ -34,7 +34,7 @@ jobs:
         env:
           # IMPORTANT: Add your API keys as "Secrets" in your GitHub repo settings
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         run: node .github/scripts/ai-agent.js
 
       # Step 5: Upload the generated HTML as an artifact (optional, for easy viewing)
