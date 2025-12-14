@@ -92,7 +92,7 @@ async function runAgent() {
   execSync(`git config --global user.email "actions@github.com"`);
   execSync(`git add ${filePath}`);
   execSync(`git commit -m "Add daily AI tools review: ${fileName}"`);
-  execSync(`git push https://${process.env.GITHUB_TOKEN}@github.com/${owner}/${repo}.git ${branch}`);
+  execSync(`git push https://${process.env.PERSONAL_ACCESS_TOKEN}@github.com/${owner}/${repo}.git ${branch}`);
 
   console.log("✅ Workflow complete!");
 }
