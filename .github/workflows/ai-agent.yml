@@ -17,11 +17,11 @@ jobs:
     steps:
       # Step 1: Check out the repository code
       - name: Check out repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4 # # It's good practice to update checkout to v4 too
 
       # Step 2: Set up Node.js
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: '18'
 
@@ -34,12 +34,13 @@ jobs:
         env:
           # IMPORTANT: Add your API keys as "Secrets" in your GitHub repo settings
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         run: node .github/scripts/ai-agent.js
 
       # Step 5: Upload the generated HTML as an artifact (optional, for easy viewing)
       - name: Upload review artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4 # <-- UPDATED TO v4
         with:
           name: daily-ai-review
           path: reviews/
+          retention-days: 30
