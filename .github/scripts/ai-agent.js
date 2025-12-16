@@ -16,6 +16,9 @@ if (!fs.existsSync(reviewsDir)) {
   fs.mkdirSync(reviewsDir, { recursive: true });
 }
 
+// --- Helper Function for Delay ---
+const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+
 // --- Main Logic ---
 
 async function runAgent() {
@@ -27,7 +30,7 @@ async function runAgent() {
   // 1. Search for AI Tools using OpenAI
   console.log("🔍 Searching for AI tools...");
   const searchResponse = await axios.post('https://api.openai.com/v1/chat/completions', {
-    model: "gpt-4o-mini", // Using the cheaper, faster model
+    model: "gpt-4o-mini",
     messages: [
       {
         role: "system",
@@ -45,6 +48,10 @@ async function runAgent() {
 
   const recommendations = JSON.parse(searchResponse.data.choices[0].message.content.match(/\[[\s\S]*\]/)[0]);
   console.log(`✅ Found ${recommendations.length} tools.`);
+
+  // Wait for 2 seconds before the next set of API calls
+  console.log("⏳ Waiting 2 seconds to avoid rate limits...");
+  await delay(2000);
 
   // 2. Generate Reviews and Format HTML
   console.log("📝 Generating reviews and formatting HTML...");
@@ -74,6 +81,10 @@ async function runAgent() {
       headers: { 'Authorization': `Bearer ${openaiApiKey}` }
     });
     toolsHtml += reviewResponse.data.choices[0].message.content;
+
+    // Wait for 2 seconds before the next API call
+    console.log("⏳ Waiting 2 seconds before next review...");
+    await delay(2000);
   }
 
   const fullHtml = `
