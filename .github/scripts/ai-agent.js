@@ -16,8 +16,32 @@ if (!fs.existsSync(reviewsDir)) {
   fs.mkdirSync(reviewsDir, { recursive: true });
 }
 
-// --- Helper Function for Delay ---
-const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+// --- Helper Function for Retry Logic ---
+async function callOpenAIWithRetry(prompt, maxRetries = 3) {
+  for (let i = 0; i < maxRetries; i++) {
+    try {
+      console.log(`🤖 Calling OpenAI... (Attempt ${i + 1}/${maxRetries})`);
+      const response = await axios.post('https://api.openai.com/v1/chat/completions', {
+        model: "gpt-3.5-turbo", // Using the more established model
+        messages: [{ role: "user", content: prompt }],
+        temperature: 0.7
+      }, {
+        headers: { 'Authorization': `Bearer ${openaiApiKey}` }
+      });
+      return response;
+    } catch (error) {
+      if (error.response && error.response.status === 429) {
+        const retryAfter = error.response.headers['retry-after'];
+        const waitTime = retryAfter ? parseInt(retryAfter) * 1000 : 20000 * (i + 1); // Exponential backoff
+        console.log(`⏳ Rate limited. Waiting ${waitTime / 1000} seconds before retrying...`);
+        await new Promise(resolve => setTimeout(resolve, waitTime));
+      } else {
+        throw error; // Re-throw non-429 errors
+      }
+    }
+  }
+  throw new Error(`Failed to complete OpenAI request after ${maxRetries} retries.`);
+}
 
 // --- Main Logic ---
 
@@ -29,35 +53,17 @@ async function runAgent() {
 
   // 1. Search for AI Tools using OpenAI
   console.log("🔍 Searching for AI tools...");
-  const searchResponse = await axios.post('https://api.openai.com/v1/chat/completions', {
-    model: "gpt-4o-mini",
-    messages: [
-      {
-        role: "system",
-        content: `You are an AI tool expert. Recommend 3 popular and reliable AI tools. Return your response as a JSON array of objects with this structure: {"name": "Tool Name", "description": "Brief description", "category": "Category", "pricing": "Pricing model", "website": "Official website URL if known", "useCase": "Specific use case"}`
-      },
-      {
-        role: "user",
-        content: "I'm looking for the latest AI tools and services."
-      }
-    ],
-    temperature: 0.7
-  }, {
-    headers: { 'Authorization': `Bearer ${openaiApiKey}` }
-  });
-
+  const searchPrompt = `You are an AI tool expert. Recommend 3 popular and reliable AI tools. Return your response as a JSON array of objects with this structure: {"name": "Tool Name", "description": "Brief description", "category": "Category", "pricing": "Pricing model", "website": "Official website URL if known", "useCase": "Specific use case"}. I'm looking for the latest AI tools and services.`;
+  
+  const searchResponse = await callOpenAIWithRetry(searchPrompt);
   const recommendations = JSON.parse(searchResponse.data.choices[0].message.content.match(/\[[\s\S]*\]/)[0]);
   console.log(`✅ Found ${recommendations.length} tools.`);
-
-  // Wait for 2 seconds before the next set of API calls
-  console.log("⏳ Waiting 2 seconds to avoid rate limits...");
-  await delay(2000);
 
   // 2. Generate Reviews and Format HTML
   console.log("📝 Generating reviews and formatting HTML...");
   let toolsHtml = '';
   for (const tool of recommendations) {
-    const prompt = `
+    const reviewPrompt = `
       Based on this info, write a professional review in HTML for ${tool.name}.
       Info: Name: ${tool.name}, Desc: ${tool.description}, Category: ${tool.category}, Pricing: ${tool.pricing}, Website: ${tool.website}
       Format:
@@ -73,18 +79,8 @@ async function runAgent() {
       </div>
       <hr>
     `;
-    const reviewResponse = await axios.post('https://api.openai.com/v1/chat/completions', {
-      model: "gpt-4o-mini",
-      messages: [{ role: "user", content: prompt }],
-      temperature: 0.7
-    }, {
-      headers: { 'Authorization': `Bearer ${openaiApiKey}` }
-    });
+    const reviewResponse = await callOpenAIWithRetry(reviewPrompt);
     toolsHtml += reviewResponse.data.choices[0].message.content;
-
-    // Wait for 2 seconds before the next API call
-    console.log("⏳ Waiting 2 seconds before next review...");
-    await delay(2000);
   }
 
   const fullHtml = `
@@ -109,6 +105,9 @@ async function runAgent() {
 }
 
 runAgent().catch(error => {
-  console.error("❌ Workflow failed:", error);
+  console.error("❌ Workflow failed:", error.message);
+  if (error.response) {
+    console.error("API Response Data:", error.response.data);
+  }
   process.exit(1);
 });
