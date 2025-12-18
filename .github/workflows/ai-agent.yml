@@ -1,26 +1,37 @@
-name: AI Agent Workflow
+name: AI Tool Discovery and Publisher
 
 on:
-  push: 
-    branches:
-      - main
   schedule:
-    - cron: '0 17 * * *'
+    - cron: '0 17 * * *' 
+  workflow_dispatch:
 
 jobs:
-  run-ai-agent:
+  discover-and-publish:
     runs-on: ubuntu-latest
-    steps:
-      - name:  Checkout code
-        uses: actions/checkout@v3
+    permissions:
+      contents: write
 
-      - name: Set up Node.js 18
-        uses: actions/setup-node@v3
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: '18'
 
       - name: Install dependencies
-        run: npm install cheerio
+        run: npm install node-fetch@2 rss-parser
 
       - name: Run AI Agent Script
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         run: node .github/scripts/ai-agent.js
+
+      - name: Upload review artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: daily-ai-review
+          path: reviews/
+          retention-days: 30
