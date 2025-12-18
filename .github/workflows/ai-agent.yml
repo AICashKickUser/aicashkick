@@ -20,7 +20,7 @@ jobs:
           node-version: '18'
 
       - name: Install dependencies
-        run: npm install axios cheerio
+        run: npm install cheerio
 
       - name: Run AI Agent Script
         run: node .github/scripts/ai-agent.js
