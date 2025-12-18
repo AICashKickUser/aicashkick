@@ -9,22 +9,14 @@ const Parser = require('rss-parser');
 const owner = process.env.GITHUB_REPOSITORY.split('/')[0];
 const repo = process.env.GITHUB_REPOSITORY.split('/')[1];
 const branch = 'main';
-const reviewsDir = 'reviews';
 const groqApiKey = process.env.GROQ_API_KEY;
-
-// Ensure the reviews directory exists
-if (!fs.existsSync(reviewsDir)) {
-  fs.mkdirSync(reviewsDir, { recursive: true });
-}
 
 // --- Main Logic ---
 
 async function runAgent() {
   console.log("🚀 Starting AI Agent with RSS and Groq...");
   const today = new Date().toISOString().split('T')[0];
-  const fileName = `ai-tools-${today}.html`;
-  const filePath = path.join(reviewsDir, fileName);
-
+  
   try {
     // 1. Get AI tools from RSS feeds
     console.log("📡 Fetching AI tools from RSS feeds...");
@@ -51,13 +43,13 @@ async function runAgent() {
       item.title.toLowerCase().includes('artificial intelligence') ||
       (item.contentSnippet && item.contentSnippet.toLowerCase().includes('ai')) ||
       (item.contentSnippet && item.contentSnippet.toLowerCase().includes('artificial intelligence'))
-    ).slice(0, 5); // Limit to 5 tools
+    ).slice(0, 3); // Limit to 3 tools
     
     console.log(`✅ Found ${aiTools.length} AI tools from feeds.`);
 
     // 2. Generate reviews using Groq
     console.log("🤖 Generating reviews with Groq...");
-    let toolsHtml = '';
+    let newArticlesHtml = '';
     
     for (const tool of aiTools) {
       const prompt = `
@@ -68,17 +60,16 @@ async function runAgent() {
         Link: ${tool.link}
         
         Format your response as HTML:
-        <div class="ai-review">
-          <h2>[Extract tool name from title]</h2>
-          <p><strong>Description:</strong> [Summarize the description]</p>
-          <p><strong>Key Features:</strong> [Extract 2-3 key features]</p>
-          <p><strong>Target Audience:</strong> [Who would benefit from this tool]</p>
+        <article class="blog-post">
+          <h3>[Extract tool name from title]</h3>
+          <span class="date">${new Date().toLocaleDateString()}</span>
+          <p>[Summarize the tool and how it could be used for a side hustle]</p>
           <p><strong>Pros:</strong> [List 2-3 advantages]</p>
           <p><strong>Cons:</strong> [List 1-2 potential drawbacks]</p>
-          <p><strong>Rating:</strong> [Give it a rating out of 10]</p>
-          <p><strong>Source:</strong> <a href="${tool.link}" target="_blank">Read more</a></p>
-        </div>
-        <hr>
+          <p><strong>Earning Potential:</strong> [Estimate earning potential for side hustles]</p>
+          <a href="${tool.link}" target="_blank" class="affiliate">Read More</a>
+          <a href="#newsletter" class="cta">Get Update Alerts</a>
+        </article>
       `;
       
       try {
@@ -97,60 +88,67 @@ async function runAgent() {
         
         const data = await response.json();
         if (data.choices && data.choices.length > 0) {
-          toolsHtml += data.choices[0].message.content;
+          newArticlesHtml += data.choices[0].message.content;
         } else {
           throw new Error('No valid response from Groq API');
         }
       } catch (error) {
         console.error(`Error generating review for ${tool.title}:`, error.message);
-        toolsHtml += `
-          <div class="ai-review">
-            <h2>${tool.title}</h2>
-            <p><strong>Description:</strong> ${tool.contentSnippet || 'No description available'}</p>
+        newArticlesHtml += `
+          <article class="blog-post">
+            <h3>${tool.title}</h3>
+            <span class="date">${new Date().toLocaleDateString()}</span>
+            <p>${tool.contentSnippet || 'No description available'}</p>
             <p><strong>Review:</strong> Unable to generate AI review at this time.</p>
-            <p><strong>Source:</strong> <a href="${tool.link}" target="_blank">Read more</a></p>
-          </div>
-          <hr>
+            <a href="${tool.link}" target="_blank" class="affiliate">Read More</a>
+            <a href="#newsletter" class="cta">Get Update Alerts</a>
+          </article>
         `;
       }
     }
 
-    // 3. Create the HTML page
-    const fullHtml = `
-      <!DOCTYPE html>
-      <html lang="en">
-      <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Latest AI Tools - ${today}</title>
-        <style>
-          body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
-          .ai-review { margin-bottom: 30px; padding: 20px; border: 1px solid #ddd; border-radius: 5px; }
-          h1, h2 { color: #333; }
-          a { color: #0066cc; }
-          hr { border: none; border-top: 1px solid #ddd; margin: 30px 0; }
-        </style>
-      </head>
-      <body>
-        <h1>Latest AI Tools and Services</h1>
-        <p><em>Updated on ${new Date().toLocaleDateString()}</em></p>
-        ${toolsHtml}
-      </body>
-      </html>
-    `;
-
-    // 4. Save the HTML file
-    fs.writeFileSync(filePath, fullHtml);
-    console.log(`💾 Saved review to ${filePath}`);
-
-    // 5. Commit and Push to GitHub
-    console.log("📤 Committing and pushing to GitHub...");
-    const { execSync } = require('child_process');
+    // 3. Update the index.html file
+    console.log("📝 Updating index.html with new reviews...");
     
+    // Get the current index.html
+    const { execSync } = require('child_process');
     execSync(`git config --global user.name "GitHub Actions Bot"`);
     execSync(`git config --global user.email "actions@github.com"`);
-    execSync(`git add ${filePath}`);
-    execSync(`git commit -m "Add daily AI tools review: ${fileName}"`);
+    execSync(`git pull origin ${branch}`);
+    
+    const indexPath = path.join(__dirname, '..', 'index.html');
+    let indexHtml = fs.readFileSync(indexPath, 'utf8');
+    
+    // Find the live blog section and insert new articles
+    const liveBlogSectionRegex = /(<section id="live-blog" class="live-blog">[\s\S]*?<\/section>)/;
+    const liveBlogMatch = indexHtml.match(liveBlogSectionRegex);
+    
+    if (liveBlogMatch) {
+      const liveBlogSection = liveBlogMatch[0];
+      const insertionPoint = liveBlogSection.lastIndexOf('<!-- Add more <article> blocks here via AI agent script or manual edit -->');
+      
+      if (insertionPoint !== -1) {
+        const beforeInsertion = liveBlogSection.substring(0, insertionPoint);
+        const afterInsertion = liveBlogSection.substring(insertionPoint);
+        const updatedLiveBlogSection = beforeInsertion + newArticlesHtml + afterInsertion;
+        
+        // Replace the old live blog section with the updated one
+        indexHtml = indexHtml.replace(liveBlogSectionRegex, updatedLiveBlogSection);
+        
+        // Write the updated index.html
+        fs.writeFileSync(indexPath, indexHtml);
+        console.log("✅ Updated index.html with new reviews.");
+      } else {
+        console.error("Could not find insertion point in live blog section.");
+      }
+    } else {
+      console.error("Could not find live blog section in index.html.");
+    }
+
+    // 4. Commit and Push to GitHub
+    console.log("📤 Committing and pushing to GitHub...");
+    execSync(`git add index.html`);
+    execSync(`git commit -m "Add daily AI tools review to index.html: ${today}"`);
     execSync(`git push https://${process.env.PERSONAL_ACCESS_TOKEN}@github.com/${owner}/${repo}.git ${branch}`);
 
     console.log("✅ Workflow complete!");
