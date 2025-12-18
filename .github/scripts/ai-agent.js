@@ -2,13 +2,15 @@
 
 const fs = require('fs');
 const path = require('path');
-const cheerio = require('cheerio');
+const fetch = require('node-fetch');
+const Parser = require('rss-parser');
 
 // --- Configuration ---
 const owner = process.env.GITHUB_REPOSITORY.split('/')[0];
 const repo = process.env.GITHUB_REPOSITORY.split('/')[1];
-const branch = 'main'; // or 'master'
+const branch = 'main';
 const reviewsDir = 'reviews';
+const groqApiKey = process.env.GROQ_API_KEY;
 
 // Ensure the reviews directory exists
 if (!fs.existsSync(reviewsDir)) {
@@ -18,74 +20,130 @@ if (!fs.existsSync(reviewsDir)) {
 // --- Main Logic ---
 
 async function runAgent() {
-  console.log("🚀 Starting AI Agent (Web Scraper Edition)...");
+  console.log("🚀 Starting AI Agent with RSS and Groq...");
   const today = new Date().toISOString().split('T')[0];
   const fileName = `ai-tools-${today}.html`;
   const filePath = path.join(reviewsDir, fileName);
 
   try {
-    // 1. Scrape the latest AI tools from Product Hunt
-    console.log("🔍 Scraping latest AI tools from Product Hunt...");
-    const productHuntUrl = 'https://www.producthunt.com/topics/ai';
-
-    // Using Node.js's built-in fetch instead of axios
-    const response = await fetch(productHuntUrl, {
-      headers: {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
-        'Accept-Language': 'en-US,en;q=0.9',
+    // 1. Get AI tools from RSS feeds
+    console.log("📡 Fetching AI tools from RSS feeds...");
+    const parser = new Parser();
+    const feeds = [
+      'https://www.producthunt.com/rss',
+      'https://techcrunch.com/category/artificial-intelligence/feed/',
+      'https://venturebeat.com/ai/feed/'
+    ];
+    
+    let allItems = [];
+    for (const feedUrl of feeds) {
+      try {
+        const feed = await parser.parseURL(feedUrl);
+        allItems = allItems.concat(feed.items.slice(0, 3)); // Get top 3 from each feed
+      } catch (error) {
+        console.log(`Failed to parse feed ${feedUrl}: ${error.message}`);
       }
-    });
+    }
+    
+    // Filter for AI-related content
+    const aiTools = allItems.filter(item => 
+      item.title.toLowerCase().includes('ai') || 
+      item.title.toLowerCase().includes('artificial intelligence') ||
+      (item.contentSnippet && item.contentSnippet.toLowerCase().includes('ai')) ||
+      (item.contentSnippet && item.contentSnippet.toLowerCase().includes('artificial intelligence'))
+    ).slice(0, 5); // Limit to 5 tools
+    
+    console.log(`✅ Found ${aiTools.length} AI tools from feeds.`);
 
-    const html = await response.text();
-    const $ = cheerio.load(html);
-    const tools = [];
-
-    // Product Hunt lists tools in specific HTML tags. We'll find them.
-    // Note: This selector might change if Product Hunt updates their website.
-    $('li[data-test="post-item"]').each((index, element) => {
-      if (index < 5) { // Let's get the top 5 tools
-        const toolName = $(element).find('h3').first().text().trim();
-        const toolTagline = $(element).find('[data-test="post-tagline"]').first().text().trim();
-        const toolUrl = `https://www.producthunt.com${$(element).find('a').first().attr('href')}`;
-        
-        if (toolName) {
-          tools.push({
-            name: toolName,
-            tagline: toolTagline,
-            url: toolUrl
-          });
-        }
-      }
-    });
-
-    console.log(`✅ Found ${tools.length} tools.`);
-
-    // 2. Format the scraped data into HTML
-    console.log("📝 Formatting reviews into HTML...");
+    // 2. Generate reviews using Groq
+    console.log("🤖 Generating reviews with Groq...");
     let toolsHtml = '';
-    for (const tool of tools) {
-      toolsHtml += `
+    
+    for (const tool of aiTools) {
+      const prompt = `
+        Based on this information, write a professional review in HTML for an AI tool.
+        
+        Title: ${tool.title}
+        Description: ${tool.contentSnippet || 'No description available'}
+        Link: ${tool.link}
+        
+        Format your response as HTML:
         <div class="ai-review">
-          <h2>${tool.name}</h2>
-          <p><strong>Description:</strong> ${tool.tagline}</p>
-          <p><strong>Pros:</strong> Newly discovered on Product Hunt, likely innovative and community-vetted.</p>
-          <p><strong>Cons:</strong> May be very new, so unproven and could have limited features.</p>
-          <p><strong>Rating:</strong> New Release!</p>
-          <p><strong>Source:</strong> <a href="${tool.url}" target="_blank">View on Product Hunt</a></p>
+          <h2>[Extract tool name from title]</h2>
+          <p><strong>Description:</strong> [Summarize the description]</p>
+          <p><strong>Key Features:</strong> [Extract 2-3 key features]</p>
+          <p><strong>Target Audience:</strong> [Who would benefit from this tool]</p>
+          <p><strong>Pros:</strong> [List 2-3 advantages]</p>
+          <p><strong>Cons:</strong> [List 1-2 potential drawbacks]</p>
+          <p><strong>Rating:</strong> [Give it a rating out of 10]</p>
+          <p><strong>Source:</strong> <a href="${tool.link}" target="_blank">Read more</a></p>
         </div>
         <hr>
       `;
+      
+      try {
+        const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${groqApiKey}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            model: 'llama3-8b-8192', // Free model on Groq
+            messages: [{ role: 'user', content: prompt }],
+            temperature: 0.7
+          })
+        });
+        
+        const data = await response.json();
+        if (data.choices && data.choices.length > 0) {
+          toolsHtml += data.choices[0].message.content;
+        } else {
+          throw new Error('No valid response from Groq API');
+        }
+      } catch (error) {
+        console.error(`Error generating review for ${tool.title}:`, error.message);
+        toolsHtml += `
+          <div class="ai-review">
+            <h2>${tool.title}</h2>
+            <p><strong>Description:</strong> ${tool.contentSnippet || 'No description available'}</p>
+            <p><strong>Review:</strong> Unable to generate AI review at this time.</p>
+            <p><strong>Source:</strong> <a href="${tool.link}" target="_blank">Read more</a></p>
+          </div>
+          <hr>
+        `;
+      }
     }
 
+    // 3. Create the HTML page
     const fullHtml = `
-      <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Latest AI Tools - ${today}</title><style>body{font-family:Arial,sans-serif;max-width:800px;margin:auto;padding:20px}.ai-review{margin-bottom:30px;padding:20px;border:1px solid #ddd;border-radius:5px}h1,h2{color:#333}a{color:#0066cc}hr{border:none;border-top:1px solid #ddd;margin:30px 0}</style></head><body><h1>Latest AI Tools from Product Hunt</h1><p><em>Updated on ${new Date().toLocaleDateString()}</em></p>${toolsHtml}</body></html>
+      <!DOCTYPE html>
+      <html lang="en">
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Latest AI Tools - ${today}</title>
+        <style>
+          body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+          .ai-review { margin-bottom: 30px; padding: 20px; border: 1px solid #ddd; border-radius: 5px; }
+          h1, h2 { color: #333; }
+          a { color: #0066cc; }
+          hr { border: none; border-top: 1px solid #ddd; margin: 30px 0; }
+        </style>
+      </head>
+      <body>
+        <h1>Latest AI Tools and Services</h1>
+        <p><em>Updated on ${new Date().toLocaleDateString()}</em></p>
+        ${toolsHtml}
+      </body>
+      </html>
     `;
 
-    // 3. Save the HTML file
+    // 4. Save the HTML file
     fs.writeFileSync(filePath, fullHtml);
     console.log(`💾 Saved review to ${filePath}`);
 
-    // 4. Commit and Push to GitHub
+    // 5. Commit and Push to GitHub
     console.log("📤 Committing and pushing to GitHub...");
     const { execSync } = require('child_process');
     
@@ -98,7 +156,7 @@ async function runAgent() {
     console.log("✅ Workflow complete!");
 
   } catch (error) {
-    console.error("❌ An error occurred:", error.message);
+    console.error("❌ Workflow failed:", error.message);
     process.exit(1);
   }
 }
