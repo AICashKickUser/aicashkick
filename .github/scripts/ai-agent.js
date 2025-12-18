@@ -21,15 +21,18 @@ async function runAgent() {
     // 1. Get AI tools from RSS feeds
     console.log("📡 Fetching AI tools from RSS feeds...");
     const parser = new Parser();
+    
+    // Using more reliable RSS feeds
     const feeds = [
-      'https://www.producthunt.com/rss',
       'https://techcrunch.com/category/artificial-intelligence/feed/',
-      'https://venturebeat.com/ai/feed/'
+      'https://www.theverge.com/ai-artificial-intelligence/rss/index.xml',
+      'https://feeds.macrumors.com/MacRumors-All.xml'
     ];
     
     let allItems = [];
     for (const feedUrl of feeds) {
       try {
+        console.log(`Trying to fetch from ${feedUrl}...`);
         const feed = await parser.parseURL(feedUrl);
         allItems = allItems.concat(feed.items.slice(0, 3)); // Get top 3 from each feed
       } catch (error) {
@@ -63,7 +66,7 @@ async function runAgent() {
         <article class="blog-post">
           <h3>[Extract tool name from title]</h3>
           <span class="date">${new Date().toLocaleDateString()}</span>
-          <p>[Summarize the tool and how it could be used for a side hustle]</p>
+          <p>[Summarize tool and how it could be used for a side hustle]</p>
           <p><strong>Pros:</strong> [List 2-3 advantages]</p>
           <p><strong>Cons:</strong> [List 1-2 potential drawbacks]</p>
           <p><strong>Earning Potential:</strong> [Estimate earning potential for side hustles]</p>
@@ -87,6 +90,8 @@ async function runAgent() {
         });
         
         const data = await response.json();
+        console.log(`Groq response for ${tool.title}:`, JSON.stringify(data, null, 2));
+        
         if (data.choices && data.choices.length > 0) {
           newArticlesHtml += data.choices[0].message.content;
         } else {
@@ -107,19 +112,14 @@ async function runAgent() {
       }
     }
 
-    // 3. Update the index.html file
+    // 3. Update index.html file
     console.log("📝 Updating index.html with new reviews...");
     
-    // Get the current index.html
-    const { execSync } = require('child_process');
-    execSync(`git config --global user.name "GitHub Actions Bot"`);
-    execSync(`git config --global user.email "actions@github.com"`);
-    execSync(`git pull origin ${branch}`);
-    
-    const indexPath = path.join(__dirname, '..', 'index.html');
+    // Get current index.html from repository root
+    const indexPath = path.join(process.cwd(), 'index.html');
     let indexHtml = fs.readFileSync(indexPath, 'utf8');
     
-    // Find the live blog section and insert new articles
+    // Find live blog section and insert new articles
     const liveBlogSectionRegex = /(<section id="live-blog" class="live-blog">[\s\S]*?<\/section>)/;
     const liveBlogMatch = indexHtml.match(liveBlogSectionRegex);
     
@@ -132,10 +132,10 @@ async function runAgent() {
         const afterInsertion = liveBlogSection.substring(insertionPoint);
         const updatedLiveBlogSection = beforeInsertion + newArticlesHtml + afterInsertion;
         
-        // Replace the old live blog section with the updated one
+        // Replace old live blog section with updated one
         indexHtml = indexHtml.replace(liveBlogSectionRegex, updatedLiveBlogSection);
         
-        // Write the updated index.html
+        // Write updated index.html
         fs.writeFileSync(indexPath, indexHtml);
         console.log("✅ Updated index.html with new reviews.");
       } else {
@@ -147,6 +147,10 @@ async function runAgent() {
 
     // 4. Commit and Push to GitHub
     console.log("📤 Committing and pushing to GitHub...");
+    const { execSync } = require('child_process');
+    
+    execSync(`git config --global user.name "GitHub Actions Bot"`);
+    execSync(`git config --global user.email "actions@github.com"`);
     execSync(`git add index.html`);
     execSync(`git commit -m "Add daily AI tools review to index.html: ${today}"`);
     execSync(`git push https://${process.env.PERSONAL_ACCESS_TOKEN}@github.com/${owner}/${repo}.git ${branch}`);
