@@ -1,4 +1,4 @@
-name: AI Tool Discovery and Publisher
+name: AI Tutorial Generator
 
 on:
   schedule:
@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  discover-and-publish:
+  generate-tutorial:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -21,18 +21,18 @@ jobs:
           node-version: '18'
 
       - name: Install dependencies
-        run: npm install node-fetch@2 rss-parser
+        run: npm install node-fetch@2
 
-      - name: Run AI Agent Script
+      - name: Run AI Tutorial Generator
         env:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         run: node .github/scripts/ai-agent.js
-        working-directory: ${{ github.workspace }}  # This ensures we're in repo root
+        working-directory: ${{ github.workspace }}
 
       - name: Upload review artifact
         uses: actions/upload-artifact@v4
         with:
-          name: daily-ai-review
-          path: reviews/
+          name: daily-ai-tutorial
+          path: index.html
           retention-days: 30
