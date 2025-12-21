@@ -5,9 +5,7 @@ const path = require('path');
 const fetch = require('node-fetch');
 
 // --- Configuration ---
-const owner = process.env.GITHUB_REPOSITORY.split('/')[0];
-const repo = process.env.GITHUB_REPOSITORY.split('/')[1];
-const branch = 'main';
+const [owner, repo] = process.env.GITHUB_REPOSITORY.split('/');
 const groqApiKey = process.env.GROQ_API_KEY;
 
 // --- Helper Function to Check for Existing Content ---
@@ -160,11 +158,21 @@ async function runAgent() {
     console.log("📤 Committing and pushing to GitHub...");
     const { execSync } = require('child_process');
     
+    // Determine the default branch
+    const branch = execSync('git rev-parse --abbrev-ref HEAD', { encoding: 'utf8' }).trim();
+    console.log(`Using branch: ${branch}`);
+    
+    // Configure git
     execSync(`git config --global user.name "GitHub Actions Bot"`);
     execSync(`git config --global user.email "actions@github.com"`);
-    execSync(`git add index.html`);
-    execSync(`git commit -m "Add daily AI tutorial to index.html: ${today}"`);
-    execSync(`git push https://${process.env.PERSONAL_ACCESS_TOKEN}@github.com/${owner}/${repo}.git ${branch}`);
+    
+    // Pull latest changes to avoid conflicts
+    execSync(`git pull origin ${branch}`, { stdio: 'inherit' });
+    
+    // Add, commit and push changes
+    execSync(`git add index.html`, { stdio: 'inherit' });
+    execSync(`git commit -m "Add daily AI tutorial to index.html: ${today}"`, { stdio: 'inherit' });
+    execSync(`git push https://${process.env.PERSONAL_ACCESS_TOKEN}@github.com/${owner}/${repo}.git ${branch}`, { stdio: 'inherit' });
 
     console.log("✅ Workflow complete!");
 
