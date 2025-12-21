@@ -1,4 +1,4 @@
-name: AI Tutorial Generator
+Tutorial Generator
 
 on:
   schedule:
