@@ -1,4 +1,4 @@
-Tutorial Generator
+name: AI Tutorial Generator
 
 on:
   schedule:
@@ -14,6 +14,8 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch all history for all branches
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
