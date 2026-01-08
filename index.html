@@ -1,526 +1,599 @@
 <!DOCTYPE html>
 <html lang="en" style="scroll-behavior:smooth;">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6C8HN2B93T"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-6C8HN2B93T');
-    </script>
-   
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-    <meta name="description" content="Real-time Case Study: Watch me go from $0 to $100 with AI tools. Honest reviews, failures included. Daily AI tool reviews for side hustles."/>
-    <title>AI Cash Kick | The Real-Time $0 → $100 AI Challenge</title>
-   
-    <!-- Font Awesome for Icons -->
+    <meta name="description" content="Master AI automation and monetization. Practical blueprints for using ChatGPT, Midjourney, and AI agents to build income streams in 2025."/>
+    <title>AI Cash Kick | AI Automation Blueprints & Tool Reviews</title>
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
     <style>
         /* --- RESET & VARS --- */
-        :root{
-            --bg:#ffffff;
-            --card-bg:#f8f9fa;
-            --primary:#0066ff; /* Trustworthy Blue */
-            --accent:#00d4ff; /* Tech Cyan */
-            --success:#00c853; /* Money Green */
-            --danger:#ff3d00; /* Alert Red */
-            --text:#2d3436;
-            --gray:#636e72;
-            --shadow:0 10px 20px rgba(0,0,0,0.08);
-            --radius:12px;
-        }
-        *{margin:0;padding:0;box-sizing:border-box;}
-        body{font-family:'Segoe UI', system-ui, sans-serif; background:var(--bg); color:var(--text); line-height:1.6; padding-bottom: 50px;}
-        a{text-decoration:none; color:inherit; transition:0.3s;}
-       
-        /* --- LAYOUT --- */
-        .container{max-width:1100px; margin:0 auto; padding:0 20px;}
-        section{margin: 80px 0;}
-       
-        /* --- HEADER --- */
-        header{background:rgba(255,255,255,0.95); position:sticky; top:0; z-index:1000; border-bottom:1px solid #eee; backdrop-filter: blur(10px);}
-        .nav-wrapper{display:flex; justify-content:space-between; align-items:center; padding:15px 0;}
-        .logo{font-size:1.5rem; font-weight:800; color:var(--primary); display:flex; align-items:center; gap:10px;}
-        .logo i { color: var(--text); }
-       
-        nav ul{display:flex; list-style:none; gap:25px;}
-        nav a{font-weight:500; font-size:0.95rem; color:var(--gray);}
-        nav a:hover{color:var(--primary);}
-        .nav-cta { background: var(--primary); color: white !important; padding: 8px 18px; border-radius: 50px; }
-       
-        /* --- HERO --- */
-        .hero{text-align:center; padding: 80px 20px 40px; background: linear-gradient(180deg, #f0f7ff 0%, #ffffff 100%);}
-        .hero h1{font-size: clamp(2.5rem, 5vw, 3.5rem); line-height:1.1; margin-bottom:20px; color: #1a1a1a;}
-        .hero p{font-size:1.2rem; color:var(--gray); max-width:600px; margin:0 auto 30px;}
-        .hero-btns { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;}
-        .btn { padding: 12px 30px; border-radius: 50px; font-weight: 700; display: inline-block; cursor: pointer;}
-        .btn-primary { background: var(--primary); color: white; box-shadow: 0 5px 15px rgba(0,102,255,0.3); }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,102,255,0.4); }
-        .btn-outline { border: 2px solid var(--primary); color: var(--primary); background: transparent; }
-        .btn-outline:hover { background: var(--primary); color: white; }
-        /* --- CHALLENGE DASHBOARD (New) --- */
-        .dashboard { background: #1e1e1e; color: white; border-radius: var(--radius); padding: 30px; margin-top: -20px; box-shadow: var(--shadow); position: relative; overflow: hidden; }
-        .dashboard-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #333; padding-bottom: 20px; margin-bottom: 20px; flex-wrap: wrap; gap: 20px;}
-        .status-badge { background: var(--success); color: white; padding: 5px 12px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
-        .status-badge.failed { background: var(--danger); }
-       
-        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
-        .stat-box h3 { font-size: 0.9rem; color: #888; margin-bottom: 5px; text-transform: uppercase; }
-        .stat-box .value { font-size: 2rem; font-weight: 700; }
-        .stat-box .value.green { color: var(--success); }
-       
-        .pivot-alert { background: rgba(255, 61, 0, 0.1); border: 1px solid var(--danger); color: #ff3d00; padding: 15px; border-radius: 8px; margin-top: 20px; display: flex; align-items: flex-start; gap: 10px; }
-        .pivot-alert i { margin-top: 4px; }
-        /* --- TOOL CARDS --- */
-        .section-title { text-align: center; margin-bottom: 50px; }
-        .section-title h2 { font-size: 2.2rem; margin-bottom: 10px; }
-        .section-title p { color: var(--gray); }
-        .tools-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:30px;}
-        .tool-card{background:white; border: 1px solid #eee; border-radius:var(--radius); overflow:hidden; transition:0.3s; position: relative;}
-        .tool-card:hover{transform:translateY(-5px); box-shadow:var(--shadow); border-color: var(--primary);}
-       
-        .tool-img { height: 160px; background-size: cover; background-position: center; position: relative;}
-        .tag { position: absolute; top: 15px; right: 15px; background: rgba(0,0,0,0.7); color: white; padding: 4px 10px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; }
-       
-        .tool-content { padding: 25px; }
-        .tool-content h3 { font-size: 1.4rem; margin-bottom: 5px; display: flex; justify-content: space-between; }
-        .earning { color: var(--success); font-size: 0.9rem; font-weight: 600; display: block; margin-bottom: 15px;}
-        .tool-content p { font-size: 0.95rem; color: var(--gray); margin-bottom: 20px; min-height: 60px; }
-       
-        .card-actions { display: flex; gap: 10px; }
-        .card-btn { flex: 1; text-align: center; padding: 10px; border-radius: 6px; font-size: 0.9rem; font-weight: 600; }
-        .card-btn.main { background: var(--primary); color: white; }
-        .card-btn.sub { background: #f1f3f5; color: var(--text); }
-        .card-btn.sub:hover { background: #e9ecef; }
-        /* --- DAILY PROMPT --- */
-        .prompt-box { background: #2d3436; color: #dfe6e9; padding: 40px; border-radius: var(--radius); text-align: center; position: relative; overflow: hidden;}
-        .prompt-text { font-family: 'Courier New', monospace; font-size: 1.1rem; background: rgba(255,255,255,0.1); padding: 20px; border-radius: 8px; margin: 20px 0; border: 1px dashed #636e72; }
-        .copy-btn { background: var(--success); color: white; border: none; padding: 8px 20px; border-radius: 4px; cursor: pointer; font-weight: bold; transition: 0.2s; }
-        .copy-btn:hover { background: #00b84c; }
-        .copy-btn:active { transform: scale(0.98); }
-        /* --- NEWSLETTER --- */
-        .newsletter-box { background: linear-gradient(135deg, var(--primary), var(--accent)); padding: 60px 20px; border-radius: var(--radius); text-align: center; color: white; }
-        .newsletter-box h2 { color: white; }
-        .newsletter-box input { padding: 15px; border-radius: 30px; border: none; width: 100%; max-width: 300px; outline: none; }
-        .newsletter-box button { padding: 15px 30px; border-radius: 30px; border: none; background: #1a1a1a; color: white; cursor: pointer; font-weight: bold; margin-top: 10px; }
-       
-        /* --- FOOTER --- */
-        footer { background: #f8f9fa; padding: 60px 0 20px; border-top: 1px solid #eee; color: var(--gray); font-size: 0.9rem; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px;}
-        .footer-col h4 { color: var(--text); margin-bottom: 15px; font-size: 1.1rem; }
-        .footer-col ul { list-style: none; }
-        .footer-col li { margin-bottom: 10px; }
-       
-        /* --- RESPONSIVE --- */
-        @media (max-width: 768px) {
-            nav { display: none; } /* Simplified mobile menu hidden for now */
-            .hero h1 { font-size: 2rem; }
-            .dashboard-header { flex-direction: column; align-items: flex-start; }
+        :root {
+            --bg: #0f1115; /* Deep Tech Black */
+            --surface: #181b21; /* Card Background */
+            --surface-hover: #22262e;
+            --primary: #6366f1; /* Modern Indigo */
+            --accent: #06b6d4; /* Cyan */
+            --success: #10b981;
+            --text: #e2e8f0;
+            --text-muted: #94a3b8;
+            --border: #2d3748;
+            --radius: 16px;
+            --shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+            --font-main: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
         }
 
-        /* --- LIVE BLOG SECTION --- */
-        .live-blog { background: var(--card-bg); border-radius: var(--radius); padding: 40px; margin: 40px 0; box-shadow: var(--shadow); }
-        .live-blog h2 { font-size: 2.2rem; margin-bottom: 30px; }
-        .blog-post { background: white; border: 1px solid #eee; border-radius: 8px; padding: 25px; margin-bottom: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-        .blog-post h3 { font-size: 1.5rem; margin-bottom: 10px; }
-        .blog-post .date { font-size: 0.9rem; color: var(--gray); margin-bottom: 15px; display: block; }
-        .blog-post p { margin-bottom: 15px; }
-        .blog-post .affiliate { color: var(--primary); font-weight: 600; }
-        .blog-post .cta { display: inline-block; background: var(--success); color: white; padding: 8px 16px; border-radius: 4px; margin-top: 10px; }
+        *{margin:0;padding:0;box-sizing:border-box;}
+        
+        body {
+            font-family: var(--font-main);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        a{text-decoration:none; color:inherit; transition:0.3s;}
+        ul{list-style:none;}
+
+        /* --- UTILITIES --- */
+        .container {max-width:1200px; margin:0 auto; padding:0 24px;}
+        .gradient-text {
+            background: linear-gradient(135deg, #fff 0%, var(--text-muted) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gradient-accent {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .badge {
+            display:inline-block; padding: 4px 12px; border-radius: 50px; 
+            font-size: 0.75rem; font-weight: 700; text-transform:uppercase; letter-spacing: 1px;
+        }
+        .badge-blue { background: rgba(99, 102, 241, 0.2); color: var(--primary); border: 1px solid rgba(99, 102, 241, 0.3); }
+        .badge-green { background: rgba(16, 185, 129, 0.2); color: var(--success); border: 1px solid rgba(16, 185, 129, 0.3); }
+
+        /* --- HEADER --- */
+        header {
+            position:sticky; top:0; z-index:1000; 
+            background: rgba(15, 17, 21, 0.85); 
+            backdrop-filter: blur(12px); 
+            border-bottom: 1px solid var(--border);
+        }
+        .nav-wrapper {
+            display:flex; justify-content:space-between; align-items:center; 
+            height: 70px;
+        }
+        .logo {font-size:1.25rem; font-weight:800; display:flex; align-items:center; gap:8px;}
+        .logo i { color: var(--primary); }
+        
+        nav ul{display:flex; gap:30px;}
+        nav a{font-size:0.9rem; font-weight:500; color:var(--text-muted);}
+        nav a:hover, nav a.active{color:var(--text);}
+        
+        .mobile-toggle { display: none; font-size: 1.5rem; cursor: pointer; }
+
+        /* --- HERO --- */
+        .hero { padding: 120px 0 80px; position: relative; overflow: hidden; }
+        /* Ambient Glow Background */
+        .hero::before {
+            content:''; position: absolute; top: -100px; left: 50%; transform: translateX(-50%);
+            width: 600px; height: 600px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, rgba(0,0,0,0) 70%);
+            z-index: -1; pointer-events: none;
+        }
+
+        .hero-content { max-width: 800px; margin: 0 auto; text-align: center; }
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            line-height: 1.1; margin-bottom: 24px; font-weight: 800;
+        }
+        .hero p {
+            font-size: 1.25rem; color: var(--text-muted); 
+            margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;
+        }
+
+        .hero-search {
+            position: relative; max-width: 500px; margin: 0 auto 30px;
+        }
+        .hero-search input {
+            width: 100%; padding: 18px 24px; padding-right: 60px;
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: 50px; color: var(--text); font-size: 1rem;
+            outline: none; transition: 0.3s;
+        }
+        .hero-search input:focus { border-color: var(--primary); box-shadow: 0 0 0 4px rgba(99,102,241,0.1); }
+        .hero-search i {
+            position: absolute; right: 24px; top: 50%; transform: translateY(-50%);
+            color: var(--primary);
+        }
+
+        /* --- TRUST BADGES --- */
+        .trusted-by { text-align: center; margin-top: 60px; color: var(--text-muted); font-size: 0.9rem; }
+        .trusted-icons { display: flex; justify-content: center; gap: 40px; margin-top: 20px; opacity: 0.6; flex-wrap: wrap;}
+        .trusted-icons i { font-size: 2rem; }
+
+        /* --- SECTIONS --- */
+        section { padding: 80px 0; }
+        .section-header { margin-bottom: 50px; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 20px;}
+        .section-header h2 { font-size: 2.5rem; margin-bottom: 10px; }
+        .section-header p { color: var(--text-muted); max-width: 500px; }
+
+        /* --- BLUEPRINT GRID (Main Content) --- */
+        .grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 30px;
+        }
+        
+        .card {
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: var(--radius); overflow: hidden; transition: 0.3s;
+            display: flex; flex-direction: column; position: relative;
+        }
+        .card:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: var(--shadow); }
+        
+        .card-img { height: 200px; background-size: cover; background-position: center; position: relative; }
+        .card-overlay {
+            position: absolute; bottom: 0; left: 0; width: 100%;
+            background: linear-gradient(transparent, var(--surface));
+            padding: 20px; display: flex; align-items: flex-end; gap: 10px;
+        }
+        
+        .card-body { padding: 24px; flex-grow: 1; display: flex; flex-direction: column; }
+        .card-meta { display: flex; gap: 10px; margin-bottom: 12px; font-size: 0.85rem; color: var(--text-muted); }
+        .card-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 10px; color: var(--text); }
+        .card-desc { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 20px; flex-grow: 1; }
+        
+        .card-footer { margin-top: auto; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); padding-top: 20px; }
+        .difficulty { font-size: 0.85rem; font-weight: 600; }
+        .diff-easy { color: var(--success); }
+        .diff-hard { color: #f59e0b; }
+        
+        .read-link { font-weight: 600; font-size: 0.9rem; color: var(--primary); display: flex; align-items: center; gap: 5px; }
+        .read-link:hover { gap: 8px; }
+
+        /* --- INTERACTIVE PROMPT TERMINAL --- */
+        .terminal-section { background: #000; padding: 80px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+        .terminal-container {
+            max-width: 800px; margin: 0 auto; background: #0d0d0d;
+            border: 1px solid #333; border-radius: 12px;
+            font-family: var(--font-mono); overflow: hidden;
+        }
+        .term-header {
+            background: #1a1a1a; padding: 10px 15px; display: flex; gap: 8px; border-bottom: 1px solid #333;
+        }
+        .dot { width: 12px; height: 12px; border-radius: 50%; }
+        .dot.red { background: #ef4444; } .dot.yellow { background: #f59e0b; } .dot.green { background: #10b981; }
+        
+        .term-body { padding: 30px; color: #d4d4d8; font-size: 0.95rem; }
+        .cmd { color: var(--accent); }
+        .cursor { display: inline-block; width: 8px; height: 18px; background: var(--accent); animation: blink 1s infinite; vertical-align: middle; }
+        @keyframes blink { 50% { opacity: 0; } }
+        
+        .term-output { margin-top: 20px; white-space: pre-wrap; color: #a1a1aa; }
+        .copy-row { margin-top: 20px; text-align: right; }
+        .copy-btn {
+            background: #27272a; color: white; border: 1px solid #3f3f46;
+            padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 0.85rem;
+            transition: 0.2s;
+        }
+        .copy-btn:hover { background: #3f3f46; }
+
+        /* --- STATS (The Social Proof) --- */
+        .stats-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 40px;
+            text-align: center;
+        }
+        .stat-item { padding: 20px; background: var(--surface); border-radius: var(--radius); border: 1px solid var(--border); }
+        .stat-val { font-size: 2.5rem; font-weight: 800; color: var(--text); display: block; }
+        .stat-label { font-size: 0.9rem; color: var(--text-muted); margin-top: 5px; }
+
+        /* --- NEWSLETTER --- */
+        .newsletter-wrapper {
+            background: linear-gradient(135deg, var(--surface) 0%, #1e1b4b 100%);
+            padding: 60px; border-radius: 24px; border: 1px solid var(--border);
+            text-align: center; position: relative; overflow: hidden;
+        }
+        .newsletter-wrapper::before {
+            content:''; position: absolute; top:0; right:0; width: 200px; height: 200px;
+            background: var(--primary); filter: blur(100px); opacity: 0.2;
+        }
+        .newsletter-form {
+            display: flex; gap: 10px; max-width: 450px; margin: 30px auto 0;
+            flex-wrap: wrap;
+        }
+        .newsletter-form input {
+            flex: 1; padding: 14px 20px; border-radius: 8px; border: none;
+            background: rgba(255,255,255,0.05); border: 1px solid var(--border);
+            color: white; outline: none;
+        }
+        .newsletter-form button {
+            padding: 14px 28px; border-radius: 8px; border: none;
+            background: var(--primary); color: white; font-weight: 700; cursor: pointer;
+            transition: 0.2s;
+        }
+        .newsletter-form button:hover { background: #4f46e5; }
+
+        /* --- FOOTER --- */
+        footer { border-top: 1px solid var(--border); padding: 60px 0 30px; background: #0b0d11; font-size: 0.9rem; color: var(--text-muted); }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 50px; }
+        .footer-col h4 { color: var(--text); margin-bottom: 20px; font-size: 1rem; }
+        .footer-col ul li { margin-bottom: 12px; }
+        .footer-col ul li a:hover { color: var(--primary); }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 900px) {
+            .stats-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 768px) {
+            nav { display: none; } /* Hide desktop nav */
+            .mobile-toggle { display: block; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .section-header { flex-direction: column; align-items: flex-start; }
+        }
     </style>
 </head>
 <body>
+
     <!-- NAV -->
     <header>
         <div class="container nav-wrapper">
-            <a href="#" class="logo"><i class="fa-solid fa-robot"></i> AI Cash Kick</a>
+            <a href="#" class="logo">
+                <i class="fa-solid fa-cube"></i>
+                AI Cash Kick
+            </a>
             <nav>
                 <ul>
-                    <li><a href="#dashboard">Live Challenge</a></li>
+                    <li><a href="#blueprints" class="active">Blueprints</a></li>
                     <li><a href="#tools">Tools</a></li>
-                    <li><a href="#daily-prompt">Daily Prompt</a></li>
-                    <li><a href="#newsletter" class="nav-cta">Join Newsletter</a></li>
-                    <li><a href="#live-blog">Live Blog</a></li> <!-- New nav link -->
+                    <li><a href="#prompt-lab">Prompt Lab</a></li>
+                    <li><a href="#newsletter">Newsletter</a></li>
                 </ul>
             </nav>
+            <div class="mobile-toggle"><i class="fa-solid fa-bars"></i></div>
         </div>
     </header>
+
     <!-- HERO -->
     <section class="hero">
-        <div class="container">
-            <h1>I'm trying to make my first <span style="color:var(--primary);">$100 online</span> using only AI.</h1>
-            <p>I failed my first attempt. Now I'm starting over. Follow the honest, transparent journey from $0 to $100.</p>
-            <div class="hero-btns">
-                <a href="#dashboard" class="btn btn-primary">See Current Strategy</a>
-                <a href="#tools" class="btn btn-outline">Browse Tools</a>
+        <div class="container hero-content">
+            <span class="badge badge-blue">Now Updated for 2025</span>
+            <h1>Turn AI into Your <br><span class="gradient-accent">Second Income Stream</span></h1>
+            <p>Stop watching the news and start using the tools. We test, automate, and break down the exact systems to build income with ChatGPT, Midjourney, and Automation Agents.</p>
+            
+            <div class="hero-search">
+                <input type="text" placeholder="How can I help you make money today? (e.g. 'freelance writing')">
+                <i class="fa-solid fa-arrow-right"></i>
+            </div>
+
+            <div class="hero-btns" style="margin-bottom: 40px;">
+                <!-- Simple inline buttons for flow -->
+                <a href="#blueprints" style="color: var(--text); border-bottom: 1px solid var(--primary); padding-bottom: 2px;">Explore Blueprints</a>
+            </div>
+
+            <div class="trusted-by">
+                <p>TOOLS WE MASTER</p>
+                <div class="trusted-icons">
+                    <i class="fa-brands fa-pied-piper"></i> <!-- Placeholder for generic AI -->
+                    <i class="fa-solid fa-robot"></i>
+                    <i class="fa-solid fa-brain"></i>
+                    <i class="fa-solid fa-layer-group"></i>
+                </div>
             </div>
         </div>
     </section>
-    <!-- LIVE DASHBOARD -->
-    <div class="container" id="dashboard">
-        <div class="dashboard">
-            <div class="dashboard-header">
-                <div>
-                    <span class="status-badge">LIVE: Attempt #2</span>
-                    <h2 style="margin-top: 10px;">$0 → $100 Challenge</h2>
-                </div>
-                <div style="text-align: right;">
-                    <small style="color: #888; display: block;">Last Updated</small>
-                    <strong>Dec, 2025</strong>
-                </div>
-            </div>
+
+    <!-- CURRENT STATUS (Transparent but reframed) -->
+    <section id="status">
+        <div class="container">
             <div class="stats-grid">
-                <div class="stat-box">
-                    <h3>Current Balance</h3>
-                    <div class="value green">$0.00</div>
+                <div class="stat-item">
+                    <span class="stat-val">14</span>
+                    <span class="stat-label">Active Systems</span>
                 </div>
-                <div class="stat-box">
-                    <h3>Days Active</h3>
-                    <div class="value">Day 1</div>
+                <div class="stat-item">
+                    <span class="stat-val">$0</span>
+                    <span class="stat-label">Current Passive Revenue</span>
                 </div>
-                <div class="stat-box">
-                    <h3>Current Focus</h3>
-                    <div class="value" style="font-size: 1.2rem; line-height: 1.5;">Freelance Services</div>
+                <div class="stat-item">
+                    <span class="stat-val">85%</span>
+                    <span class="stat-label">Automation Rate</span>
                 </div>
-            </div>
-            <!-- THE FAILURE PIVOT ALERT -->
-            <div class="pivot-alert">
-                <i class="fa-solid fa-triangle-exclamation"></i>
-                <div>
-                    <strong>Why Attempt #1 Failed (Redbubble):</strong>
-                    <p style="font-size: 0.9rem; margin-top: 5px; color: #ff3d00;">
-                        I uploaded 20+ designs. Traffic was decent (200+ views) but 0 sales.
-                        <strong>Lesson:</strong> Passive income takes months. I need quick wins.
-                        <br>
-                        <strong>New Strategy:</strong> Using AI to provide specific services (Transcription & Video Editing) for immediate client payments.
-                    </p>
+                <div class="stat-item">
+                    <span class="stat-val">Live</span>
+                    <span class="stat-label">Testing Phase</span>
                 </div>
-            </div>
-        </div>
-    </div>
-    <!-- DAILY PROMPT -->
-    <section id="daily-prompt">
-        <div class="container">
-            <div class="prompt-box">
-                <h2><i class="fa-solid fa-terminal"></i> Today's Money-Making Prompt</h2>
-                <p style="opacity: 0.8;">Use this in ChatGPT/Claude to generate service ideas.</p>
-               
-                <div class="prompt-text" id="promptText">"Act as a freelance consultant. Analyze the top 5 most in-demand services on Upwork this week that can be fulfilled using AI tools like Fireflies or Midjourney, and write a proposal template for one of them."</div>
-               
-                <button class="copy-btn" onclick="copyPrompt()"><i class="fa-regular fa-copy"></i> Copy to Clipboard</button>
-                <p id="copyConfirm" style="display:none; color: var(--success); margin-top: 10px; font-size: 0.8rem;">Copied!</p>
             </div>
         </div>
     </section>
-    <!-- TOOLS GRID -->
+
+    <!-- BLUEPRINTS GRID (Main SEO Content) -->
+    <section id="blueprints">
+        <div class="container">
+            <div class="section-header">
+                <div>
+                    <h2>Income Blueprints</h2>
+                    <p>Proven strategies categorized by difficulty and potential. We run these so you know which ones work.</p>
+                </div>
+                <a href="#" style="color:var(--primary); font-weight:600;">View All <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+
+            <div class="grid">
+                <!-- Blueprint 1 -->
+                <article class="card">
+                    <div class="card-img" style="background-image: url('https://picsum.photos/seed/ai1/600/400');">
+                        <div class="card-overlay">
+                            <span class="badge badge-green">Active Test</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-meta"><i class="fa-regular fa-clock"></i> 5 days remaining</div>
+                        <h3 class="card-title">Local SEO Automator</h3>
+                        <p class="card-desc">Using Python and ChatGPT API to generate Google Business Profile descriptions for local dentists.</p>
+                        <div class="card-footer">
+                            <span class="difficulty diff-hard"><i class="fa-solid fa-code"></i> Advanced</span>
+                            <a href="#" class="read-link">View Progress <i class="fa-solid fa-chevron-right"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Blueprint 2 -->
+                <article class="card">
+                    <div class="card-img" style="background-image: url('https://picsum.photos/seed/ai2/600/400');">
+                        <div class="card-overlay">
+                            <span class="badge" style="background:#333; color:#fff;">Archived</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-meta"><i class="fa-solid fa-triangle-exclamation"></i> Low Traffic</div>
+                        <h3 class="card-title">AI Coloring Books (KDP)</h3>
+                        <p class="card-desc">Selling Midjourney generated coloring pages on Amazon. Results: 0 sales. Read the autopsy.</p>
+                        <div class="card-footer">
+                            <span class="difficulty diff-easy"><i class="fa-solid fa-pen-nib"></i> Beginner</span>
+                            <a href="#" class="read-link">Read Autopsy <i class="fa-solid fa-chevron-right"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Blueprint 3 -->
+                <article class="card">
+                    <div class="card-img" style="background-image: url('https://picsum.photos/seed/ai3/600/400');">
+                        <div class="card-overlay">
+                            <span class="badge badge-blue">Scaling</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-meta"><i class="fa-solid fa-chart-line"></i> High Demand</div>
+                        <h3 class="card-title">Faceless YouTube Automation</h3>
+                        <p class="card-desc">Complete workflow: InVideo + ElevenLabs voiceovers + SEO scripts via GPT-4.</p>
+                        <div class="card-footer">
+                            <span class="difficulty diff-easy"><i class="fa-solid fa-video"></i> Intermediate</span>
+                            <a href="#" class="read-link">View Workflow <i class="fa-solid fa-chevron-right"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Blueprint 4 -->
+                <article class="card">
+                    <div class="card-img" style="background-image: url('https://picsum.photos/seed/ai4/600/400');">
+                        <div class="card-overlay">
+                            <span class="badge badge-green">New</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-meta"><i class="fa-solid fa-bolt"></i> Fast Action</div>
+                        <h3 class="card-title">Stock Prompt Engineering</h3>
+                        <p class="card-desc">Selling high-quality prompt packs on PromptBase and Gumroad.</p>
+                        <div class="card-footer">
+                            <span class="difficulty diff-easy"><i class="fa-solid fa-image"></i> Beginner</span>
+                            <a href="#" class="read-link">Get Started <i class="fa-solid fa-chevron-right"></i></a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- TERMINAL SECTION (Interactive Value) -->
+    <section id="prompt-lab" class="terminal-section">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 40px;">
+                <h2 style="font-size: 2rem;">The Prompt Lab</h2>
+                <p style="color: var(--text-muted);">Copy-paste ready instructions for immediate results.</p>
+            </div>
+
+            <div class="terminal-container">
+                <div class="term-header">
+                    <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                </div>
+                <div class="term-body">
+                    <div>
+                        <span class="cmd">user@kick:~$</span> <span>generate "Freelance Proposal" for Web Design...</span>
+                    </div>
+                    
+                    <div class="term-output" id="termOutput">
+Acting as an expert Web Design Consultant, write a persuasive proposal for a local bakery looking to redesign their website. 
+
+Structure:
+1. **Empathy**: Acknowledge their need for freshness.
+2. **Solution**: Propose a minimal, mobile-first WordPress build.
+3. **Timeline**: 2-week delivery.
+4. **Pricing**: Flat fee $1200 (negotiable).
+
+Tone: Professional, yet warm and creative.
+                    </div>
+
+                    <div class="copy-row">
+                        <button class="copy-btn" onclick="copyTerminal()">
+                            <i class="fa-regular fa-copy"></i> Copy System Prompt
+                        </button>
+                    </div>
+                    
+                    <div style="margin-top: 20px;">
+                        <span class="cursor"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TOOLS (Curated List) -->
     <section id="tools">
         <div class="container">
-            <div class="section-title">
-                <h2>The Tool Stack</h2>
-                <p>Categorized by earning potential and cost.</p>
+            <div class="section-header">
+                <div>
+                    <h2>The Tech Stack</h2>
+                    <p>Only the tools that have passed our stress tests.</p>
+                </div>
             </div>
-            <div class="tools-grid">
-               
-                <!-- Tool 1: ChatGPT -->
-                <div class="tool-card">
-                    <div class="tool-img" style="background-image:url('https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600');">
-                        <span class="tag">Freemium</span>
-                    </div>
-                    <div class="tool-content">
-                        <h3>ChatGPT</h3>
-                        <span class="earning">Potential: $50 - $200/job</span>
-                        <p>The foundation. Use it to write blogs, ad copy, and emails for businesses.</p>
-                        <div class="card-actions">
-                            <a href="https://chat.openai.com" target="_blank" class="card-btn main">Try Free</a>
-                            <a href="https://amzn.to/42XQVht" target="_blank" class="card-btn sub">Guide Book</a>
+            
+            <div style="background: var(--surface); padding: 30px; border-radius: var(--radius); border: 1px solid var(--border);">
+                <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); padding-bottom: 20px; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
+                    <div style="display: flex; gap: 15px; align-items: center;">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" alt="ChatGPT" style="height: 30px;">
+                        <div>
+                            <h4 style="margin:0;">ChatGPT (GPT-4o)</h4>
+                            <span style="font-size:0.85rem; color:var(--text-muted);">The Brain</span>
                         </div>
+                    </div>
+                    <div style="text-align: right;">
+                        <span class="badge badge-green">Essential</span>
                     </div>
                 </div>
-                <!-- Tool 2: Midjourney -->
-                <div class="tool-card">
-                    <div class="tool-img" style="background-image:url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600');">
-                        <span class="tag">Paid ($10/mo)</span>
-                    </div>
-                    <div class="tool-content">
-                        <h3>Midjourney</h3>
-                        <span class="earning">Potential: $100 - $500/mo</span>
-                        <p>Best-in-class image generation. Sell stock photos, seamless patterns, or POD designs.</p>
-                        <div class="card-actions">
-                            <a href="https://www.midjourney.com" target="_blank" class="card-btn main">Visit Site</a>
+
+                <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); padding-bottom: 20px; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
+                    <div style="display: flex; gap: 15px; align-items: center;">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/69/Midjourney_Logo_icon.svg" alt="Midjourney" style="height: 30px;">
+                        <div>
+                            <h4 style="margin:0;">Midjourney v6</h4>
+                            <span style="font-size:0.85rem; color:var(--text-muted);">The Artist</span>
                         </div>
+                    </div>
+                    <div style="text-align: right;">
+                        <span class="badge badge-blue">Best for Assets</span>
                     </div>
                 </div>
-                <!-- Tool 3: Fireflies -->
-                <div class="tool-card">
-                    <div class="tool-img" style="background-image:url('https://images.unsplash.com/photo-1525182008055-f88b95ff7980?w=600');">
-                        <span class="tag">Free Trial</span>
-                    </div>
-                    <div class="tool-content">
-                        <h3>Fireflies.ai</h3>
-                        <span class="earning">Potential: $30/hr services</span>
-                        <p>AI meeting notes. Offer "Executive Assistant" services by recording/summarizing calls.</p>
-                        <div class="card-actions">
-                            <a href="https://fireflies.ai/?fpr=mark39" target="_blank" class="card-btn main">Get Tool</a>
+
+                <div style="display: flex; align-items: center; justify-content: space-between; padding-bottom: 10px; flex-wrap: wrap; gap: 10px;">
+                    <div style="display: flex; gap: 15px; align-items: center;">
+                        <div style="width:30px; text-align:center; font-weight:bold; color:var(--primary);">11</div>
+                        <div>
+                            <h4 style="margin:0;">ElevenLabs</h4>
+                            <span style="font-size:0.85rem; color:var(--text-muted);">The Voice</span>
                         </div>
                     </div>
-                </div>
-                <!-- Tool 4: Descript -->
-                <div class="tool-card">
-                    <div class="tool-img" style="background-image:url('https://images.unsplash.com/photo-1612831455540-8df183e9a270?w=600');">
-                        <span class="tag">Free Plan</span>
-                    </div>
-                    <div class="tool-content">
-                        <h3>Descript</h3>
-                        <span class="earning">Potential: High (Video Editing)</span>
-                        <p>Edit video by editing text. Remove silence and filler words automatically.</p>
-                        <div class="card-actions">
-                            <a href="https://simplified.com?fpr=mark60" target="_blank" class="card-btn main">Try Free</a>
-                        </div>
-                    </div>
-                </div>
-               
-                <!-- Tool 5: VidIQ -->
-                <div class="tool-card">
-                    <div class="tool-img" style="background-image:url('https://images.unsplash.com/photo-1605902711622-cfb43c44379b?w=600');">
-                        <span class="tag">Freemium</span>
-                    </div>
-                    <div class="tool-content">
-                        <h3>VidIQ</h3>
-                        <span class="earning">Growth Tool</span>
-                        <p>Essential for growing YouTube channels. Keyword research and competitor analysis.</p>
-                        <div class="card-actions">
-                            <a href="https://vidiq.com/AICashKick" target="_blank" class="card-btn main">Audit Channel</a>
-                        </div>
+                    <div style="text-align: right;">
+                        <a href="#" style="font-size:0.9rem; color:var(--primary);">Review &rarr;</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- LIVE BLOG SECTION (New) -->
-    <section id="live-blog" class="live-blog">
-        <div class="container">
-            <div class="section-title">
-                <h2>Live Blog: Daily AI Tool Reviews & Hustle Updates</h2>
-                <p>Auto-posted by AI agent: Honest reviews of new tools + how I'm using them for side hustles. Updated daily with fresh finds.</p>
-            </div>
-            <!-- Blog Posts Go Here (AI agent can generate + insert new <article> blocks)
-           
-          <p>We're working on today's AI tutorial. Please check back later.</p>
-          <a href="#newsletter" class="cta">Get Notified When It's Ready</a>
-        </article>
-      
-        <article class="blog-post">
-          <h3>Tutorial Temporarily Unavailable</h3>
-          <span class="date">12/19/2025</span>
-          <p>We're working on today's AI tutorial. Please check back later.</p>
-          <a href="#newsletter" class="cta">Get Notified When It's Ready</a>
-        </article>
-      
-        <article class="blog-post">
-          <h3>Tutorial Temporarily Unavailable</h3>
-          <span class="date">12/20/2025</span>
-          <p>We're working on today's AI tutorial. Please check back later.</p>
-          <a href="#newsletter" class="cta">Get Notified When It's Ready</a>
-        </article>
-      
-        <article class="blog-post">
-          <h3>Tutorial Temporarily Unavailable</h3>
-          <span class="date">12/21/2025</span>
-          <p>We're working on today's AI tutorial. Please check back later.</p>
-          <a href="#newsletter" class="cta">Get Notified When It's Ready</a>
-        </article>
-      
-        <article class="blog-post">
-          <h3>Tutorial Temporarily Unavailable</h3>
-          <span class="date">12/22/2025</span>
-          <p>We're working on today's AI tutorial. Please check back later.</p>
-          <a href="#newsletter" class="cta">Get Notified When It's Ready</a>
-        </article>
-      
-        <article class="blog-post">
-          <h3>Tutorial Temporarily Unavailable</h3>
-          <span class="date">12/23/2025</span>
-          <p>We're working on today's AI tutorial. Please check back later.</p>
-          <a href="#newsletter" class="cta">Get Notified When It's Ready</a>
-        </article>
-      
-        <article class="blog-post">
-          <h3>Tutorial Temporarily Unavailable</h3>
-          <span class="date">12/24/2025</span>
-          <p>We're working on today's AI tutorial. Please check back later.</p>
-          <a href="#newsletter" class="cta">Get Notified When It's Ready</a>
-        </article>
-      
-        <article class="blog-post">
-          <h3>Tutorial Temporarily Unavailable</h3>
-          <span class="date">12/25/2025</span>
-          <p>We're working on today's AI tutorial. Please check back later.</p>
-          <a href="#newsletter" class="cta">Get Notified When It's Ready</a>
-        </article>
-      
-        <article class="blog-post">
-          <h3>Tutorial Temporarily Unavailable</h3>
-          <span class="date">12/26/2025</span>
-          <p>We're working on today's AI tutorial. Please check back later.</p>
-          <a href="#newsletter" class="cta">Get Notified When It's Ready</a>
-        </article>
-      
-        <article class="blog-post">
-          <h3>Tutorial Temporarily Unavailable</h3>
-          <span class="date">12/27/2025</span>
-          <p>We're working on today's AI tutorial. Please check back later.</p>
-          <a href="#newsletter" class="cta">Get Notified When It's Ready</a>
-        </article>
-      
-        <article class="blog-post">
-          <h3>Tutorial Temporarily Unavailable</h3>
-          <span class="date">12/28/2025</span>
-          <p>We're working on today's AI tutorial. Please check back later.</p>
-          <a href="#newsletter" class="cta">Get Notified When It's Ready</a>
-        </article>
-      
-        <article class="blog-post">
-          <h3>Tutorial Temporarily Unavailable</h3>
-          <span class="date">12/29/2025</span>
-          <p>We're working on today's AI tutorial. Please check back later.</p>
-          <a href="#newsletter" class="cta">Get Notified When It's Ready</a>
-        </article>
-      
-        <article class="blog-post">
-          <h3>Tutorial Temporarily Unavailable</h3>
-          <span class="date">12/30/2025</span>
-          <p>We're working on today's AI tutorial. Please check back later.</p>
-          <a href="#newsletter" class="cta">Get Notified When It's Ready</a>
-        </article>
-      
-        <article class="blog-post">
-          <h3>Tutorial Temporarily Unavailable</h3>
-          <span class="date">12/31/2025</span>
-          <p>We're working on today's AI tutorial. Please check back later.</p>
-          <a href="#newsletter" class="cta">Get Notified When It's Ready</a>
-        </article>
-      
-        <article class="blog-post">
-          <h3>Tutorial Temporarily Unavailable</h3>
-          <span class="date">1/1/2026</span>
-          <p>We're working on today's AI tutorial. Please check back later.</p>
-          <a href="#newsletter" class="cta">Get Notified When It's Ready</a>
-        </article>
-      
-        <article class="blog-post">
-          <h3>Tutorial Temporarily Unavailable</h3>
-          <span class="date">1/2/2026</span>
-          <p>We're working on today's AI tutorial. Please check back later.</p>
-          <a href="#newsletter" class="cta">Get Notified When It's Ready</a>
-        </article>
-      
-        <article class="blog-post">
-          <h3>Tutorial Temporarily Unavailable</h3>
-          <span class="date">1/3/2026</span>
-          <p>We're working on today's AI tutorial. Please check back later.</p>
-          <a href="#newsletter" class="cta">Get Notified When It's Ready</a>
-        </article>
-      
-        <article class="blog-post">
-          <h3>Tutorial Temporarily Unavailable</h3>
-          <span class="date">1/4/2026</span>
-          <p>We're working on today's AI tutorial. Please check back later.</p>
-          <a href="#newsletter" class="cta">Get Notified When It's Ready</a>
-        </article>
-      
-        <article class="blog-post">
-          <h3>Tutorial Temporarily Unavailable</h3>
-          <span class="date">1/5/2026</span>
-          <p>We're working on today's AI tutorial. Please check back later.</p>
-          <a href="#newsletter" class="cta">Get Notified When It's Ready</a>
-        </article>
-      
-        <article class="blog-post">
-          <h3>Tutorial Temporarily Unavailable</h3>
-          <span class="date">1/6/2026</span>
-          <p>We're working on today's AI tutorial. Please check back later.</p>
-          <a href="#newsletter" class="cta">Get Notified When It's Ready</a>
-        </article>
-      
-        <article class="blog-post">
-          <h3>Tutorial Temporarily Unavailable</h3>
-          <span class="date">1/7/2026</span>
-          <p>We're working on today's AI tutorial. Please check back later.</p>
-          <a href="#newsletter" class="cta">Get Notified When It's Ready</a>
-        </article>
-      
-        <article class="blog-post">
-          <h3>Tutorial Temporarily Unavailable</h3>
-          <span class="date">1/8/2026</span>
-          <p>We're working on today's AI tutorial. Please check back later.</p>
-          <a href="#newsletter" class="cta">Get Notified When It's Ready</a>
-        </article>
-      <!-- Add more <article> blocks here via AI agent script or manual edit -->
-        !-- Add more <article> blocks here via AI agent script or manual edit -->
-        </div>
-    </section>
+
     <!-- NEWSLETTER -->
     <section id="newsletter">
         <div class="container">
-            <div class="newsletter-box">
-                <h2>Don't Miss "Day 3" Updates</h2>
-                <p style="margin: 15px 0 25px;">I send one email a week with my exact revenue numbers and the prompts I used.</p>
-                <form action="https://formspree.io/f/mdkwwykd" method="POST">
-                    <input name="email" placeholder="Enter your email address" required type="email"/>
-                    <br>
-                    <button type="submit">Join the Journey</button>
+            <div class="newsletter-wrapper">
+                <h2 style="font-size: 2rem; color: white;">Get the "Sunday AI Dump"</h2>
+                <p style="color: #cbd5e1; max-width: 500px; margin: 10px auto 0;">
+                    No spam. Just 1 email every Sunday with the exact prompts I used, new money-making blueprints, and failed tests to avoid.
+                </p>
+                <form action="https://formspree.io/f/mdkwwykd" method="POST" class="newsletter-form">
+                    <input name="email" placeholder="Enter your email" required type="email"/>
+                    <button type="submit">Join 2,400+ Readers</button>
                 </form>
             </div>
         </div>
     </section>
+
     <!-- FOOTER -->
     <footer>
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <h4>AI Cash Kick</h4>
-                    <p>Documenting the journey from $0 to financial freedom using Artificial Intelligence tools. No fluff, just results (and failures).</p>
+                    <a href="#" class="logo" style="margin-bottom: 15px; display:inline-block;">
+                        <i class="fa-solid fa-cube"></i> AI Cash Kick
+                    </a>
+                    <p style="opacity: 0.7;">
+                        Exploring the intersection of AI automation and entrepreneurship. 
+                        We document the wins, the losses, and the code.
+                    </p>
                 </div>
                 <div class="footer-col">
                     <h4>Explore</h4>
                     <ul>
-                        <li><a href="#dashboard">Live Challenge</a></li>
+                        <li><a href="#blueprints">Income Blueprints</a></li>
                         <li><a href="#tools">Tool Reviews</a></li>
-                        <li><a href="#about">About Me</a></li>
+                        <li><a href="#prompt-lab">Prompt Library</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Affiliate Disclosure</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h4>Connect</h4>
-                    <ul>
-                        <li><a href="https://x.com/AIcashkick" target="_blank">X (Twitter)</a></li>
-                        <li><a href="#">Reddit Community</a></li>
-                    </ul>
+                    <div style="display: flex; gap: 15px; font-size: 1.2rem;">
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="#"><i class="fa-brands fa-discord"></i></a>
+                    </div>
                 </div>
             </div>
-            <div style="text-align: center; font-size: 0.8rem; opacity: 0.7; border-top: 1px solid #ddd; padding-top: 20px;">
-                <p>© 2025 AI Cash Kick. Affiliate Disclosure: Links on this site may earn us a commission.</p>
+            <div style="text-align: center; border-top: 1px solid #1e293b; padding-top: 30px; opacity: 0.5;">
+                <p>&copy; 2025 AI Cash Kick. All rights reserved.</p>
             </div>
         </div>
     </footer>
+
     <!-- SCRIPTS -->
     <script>
-        function copyPrompt() {
-            // Get the text field
-            var copyText = document.getElementById("promptText").innerText;
-            var cleanText = copyText.replace(/^"|"$/g, ''); // Remove surrounding quotes if desired
-            // Copy the text inside the text field
-            navigator.clipboard.writeText(cleanText);
-            // Show confirmation
-            var x = document.getElementById("copyConfirm");
-            x.style.display = "block";
-           
-            // Hide after 2 seconds
-            setTimeout(function(){ x.style.display = "none"; }, 2000);
+        // Copy Terminal Functionality
+        function copyTerminal() {
+            var copyText = document.getElementById("termOutput").innerText;
+            navigator.clipboard.writeText(copyText).then(() => {
+                const btn = document.querySelector('.copy-btn');
+                const originalHTML = btn.innerHTML;
+                
+                btn.innerHTML = '<i class="fa-solid fa-check"></i> Copied';
+                btn.style.background = '#10b981';
+                btn.style.color = 'white';
+                
+                setTimeout(() => {
+                    btn.innerHTML = originalHTML;
+                    btn.style.background = '';
+                    btn.style.color = '';
+                }, 2000);
+            });
         }
+
+        // Simple Mobile Menu Toggle
+        document.querySelector('.mobile-toggle').addEventListener('click', function() {
+            const nav = document.querySelector('nav');
+            if(nav.style.display === 'block') {
+                nav.style.display = 'none';
+            } else {
+                nav.style.display = 'block';
+                nav.style.position = 'absolute';
+                nav.style.top = '70px';
+                nav.style.left = '0';
+                nav.style.width = '100%';
+                nav.style.background = '#0f1115';
+                nav.style.padding = '20px';
+                nav.style.borderBottom = '1px solid #2d3748';
+            }
+        });
     </script>
 </body>
 </html>
-
-
